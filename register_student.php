@@ -1,46 +1,48 @@
-// register_student.php
 <?php
 session_start();
 require_once('config.php');
 
-// Vérifier si l'utilisateur connecté est un professeur
+// Vérifiez si l'utilisateur est connecté en tant que professeur
 if ($_SESSION['role'] !== 'teacher') {
-    // Redirigez l'utilisateur vers le tableau de bord approprié (élève ou professeur)
-    if ($_SESSION['role'] === 'student') {
-        header('Location: student_dashboard.php');
-    } else {
-        header('Location: teacher_dashboard.php');
-    }
+    // Redirigez l'utilisateur vers la page de connexion s'il n'est pas un professeur
+    header('Location: login.php');
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les informations du nouvel élève à partir du formulaire d'inscription
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    // Insérer les informations du nouvel élève dans la table "users" avec le rôle "student"
-    $sql = "INSERT INTO users (role, first_name, last_name, username, password, email)
-            VALUES ('student', '$first_name', '$last_name', '$username', '$password', '$email')";
-    $result = mysqli_query($conn, $sql);
+    // Vérifiez si l'élève existe déjà dans la table "users" (en tant qu'élève ou professeur)
+    $check_user_sql = "SELECT * FROM users WHERE username = '$username' OR email = '$email'";
+    $check_user_result = mysqli_query($conn, $check_user_sql);
 
-    if ($result) {
-        $success_message = "Le compte de l'élève a été créé avec succès !";
+    if (mysqli_num_rows($check_user_result) > 0) {
+        $error_message = "Un utilisateur avec le même nom d'utilisateur ou la même adresse e-mail existe déjà.";
     } else {
-        $error_message = "Une erreur s'est produite lors de la création du compte de l'élève. Veuillez réessayer.";
+        // Inscrivez l'élève dans la table "users" avec le rôle "student"
+        $insert_user_sql = "INSERT INTO users (first_name, last_name, username, password, email, role)
+                            VALUES ('$first_name', '$last_name', '$username', '$password', '$email', 'student')";
+        $insert_user_result = mysqli_query($conn, $insert_user_sql);
+
+        if ($insert_user_result) {
+            $success_message = "L'élève a été inscrit avec succès !";
+        } else {
+            $error_message = "Une erreur s'est produite lors de l'inscription de l'élève. Veuillez réessayer.";
+        }
     }
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Inscrire un nouvel élève</title>
+    <title>Inscription d'un nouvel élève</title>
 </head>
 <body>
-<h1>Inscrire un nouvel élève</h1>
+<h1>Inscription d'un nouvel élève</h1>
 <?php if (isset($error_message)) { ?>
     <p style="color: red;"><?php echo $error_message; ?></p>
 <?php } elseif (isset($success_message)) { ?>
@@ -55,9 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="text" name="username" required><br>
     <label for="password">Mot de passe :</label>
     <input type="password" name="password" required><br>
-    <label for="email">Email :</label>
+    <label for="email">Adresse e-mail :</label>
     <input type="email" name="email" required><br>
     <input type="submit" value="Inscrire l'élève">
 </form>
+<a href="teacher_dashboard.php">Retour au tableau de bord des professeurs</a>
+<a href="logout.php">Se déconnecter</a>
 </body>
 </html>

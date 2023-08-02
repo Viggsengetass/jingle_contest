@@ -9,9 +9,7 @@ if ($_SESSION['role'] !== 'student') {
     exit();
 }
 
-// Vous pouvez ajouter ici le code pour afficher les jingles soumis par l'élève
-
-// Vous pouvez également ajouter d'autres fonctionnalités spécifiques aux élèves ici
+// Vous pouvez ajouter ici le code pour afficher les jingles soumis par l'élève connecté
 
 ?>
 <!DOCTYPE html>
@@ -21,8 +19,21 @@ if ($_SESSION['role'] !== 'student') {
 </head>
 <body>
 <h1>Bienvenue, <?php echo $_SESSION['username']; ?> !</h1>
-<!-- Affichez ici les informations spécifiques aux élèves et les jingles soumis par l'élève -->
-<!-- ... -->
+<!-- Affichez ici les jingles soumis par l'élève connecté -->
+<?php
+// Récupérez les jingles soumis par l'élève connecté à partir de la table "jingles"
+$sql = "SELECT * FROM jingles WHERE student_id = {$_SESSION['user_id']}";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    echo "<h2>Mes jingles soumis :</h2>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<p>{$row['jingle_title']} - <a href='{$row['jingle_file_path']}' target='_blank'>Écouter</a></p>";
+    }
+} else {
+    echo "<p>Aucun jingle soumis pour le moment.</p>";
+}
+?>
 <a href="logout.php">Se déconnecter</a>
 </body>
 </html>
