@@ -34,6 +34,23 @@ if (mysqli_num_rows($result) > 0) {
     echo "<p>Aucun jingle soumis pour le moment.</p>";
 }
 ?>
+<!-- Affichez ici les évaluations reçues -->
+<?php
+// Récupérez les évaluations des jingles soumis par l'élève connecté à partir de la table "jingles"
+$sql = "SELECT jingles.jingle_title, jingles.evaluation FROM jingles
+            WHERE jingles.student_id = {$_SESSION['user_id']} AND jingles.evaluation IS NOT NULL";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    echo "<h2>Mes évaluations :</h2>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<p>{$row['jingle_title']} - Évaluation : {$row['evaluation']}/10</p>";
+    }
+} else {
+    echo "<p>Aucune évaluation reçue pour le moment.</p>";
+}
+?>
+<a href="contest_stats.php">Voir les statistiques du concours</a>
 <a href="logout.php">Se déconnecter</a>
 </body>
 </html>
