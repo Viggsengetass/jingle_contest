@@ -104,14 +104,7 @@ if (isset($_SESSION["username"])) {
                     echo '
                          <a href="/logout.php"><button type="button" class="btn btn-warning me-3">Déconnexion</button></a>';
                 } else {
-                    echo '<div class="d-flex align-items-center">
-                    <a href="/login.php"><button type="button" class="btn btn-outline-light px-3 me-2">
-                        Connexion
-                    </button></a>
-                    <a href="/inscription.php"><button type="button" class="btn btn-warning me-3">
-                        S\'inscrire
-                    </button></a>
-                </div>';
+                    echo ';
                 }
                 ?>
             </div>

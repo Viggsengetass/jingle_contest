@@ -1,85 +1,60 @@
 <?php
 session_start();
-require('config.php');
-if (isset($_SESSION["username"])) {
-    header("Location: /first/first.php");
-    exit();
+require_once('config.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Recherchez l'utilisateur dans la table "users" en utilisant son nom d'utilisateur et mot de passe
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+
+        // L'utilisateur est connecté avec succès, enregistrez ses informations dans la session
+        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['role'] = $user['role'];
+        $_SESSION['username'] = $username;
+
+        if ($user['role'] === 'student') {
+            // Redirigez l'élève vers le tableau de bord des élèves
+            header('Location: student_dashboard.php');
+            exit();
+        } elseif ($user['role'] === 'teacher') {
+            // Redirigez le professeur vers le tableau de bord des professeurs
+            header('Location: teacher_dashboard.php');
+            exit();
+        }
+    } else {
+        $error_message = "Nom d'utilisateur ou mot de passe incorrect";
+    }
 }
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/MDB5-Pro-6.1.0/plugins/css/all.min.css">
-    <link rel="stylesheet" href="assets/MDB5-Pro-6.1.0/css/mdb.dark.min.css">
-    <title></title>
+    <title>Page de connexion</title>
 </head>
-<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
-<?php
-include('assets/includes/Header.php');
-
-if (isset($_POST['email']) && isset($_POST['password'])) {
-    $email = mysqli_real_escape_string($conn, htmlspecialchars($_POST['email']));
-    $password = mysqli_real_escape_string($conn, htmlspecialchars(hash('sha256', $_POST['password'])));
-    if ($email !== "" && $password !== "") {
-        $requete = "SELECT count(*) FROM users where email ='" . $email . "' and password='" . $password . "'";
-        $exec_requete = mysqli_query($conn, $requete);
-        $reponse = mysqli_fetch_array($exec_requete);
-        $count = $reponse['count(*)'];
-        if ($count == 1) { // nom d'utilisateur et mot de passe correctes
-
-            $requete = "SELECT * FROM users where email ='" . $email . "' and password='" . $password . "'";
-            $exec_requete = mysqli_query($conn, $requete);
-            $reponse = mysqli_fetch_array($exec_requete);
-            $username = $reponse['username'];
-            $email = $reponse['email'];
-            $role = $reponse['role'];
-            $id = $reponse['id'];
-            $Etat = $reponse['Etat'];
-            $_SESSION['email'] = $email;
-            $_SESSION['username'] = $username;
-            $_SESSION['role'] = $role;
-            $_SESSION['id'] = $id;
-            $_SESSION['Etat'] = $Etat;
-            header('Location: first/first.php');
-        } else {
-            echo '<form method="POST">
-                 <h4 style="color: red;">email ou mot de passe incorect</h4>
-                 <div class="form-group">
-                    <label for="exampleInputEmail1">email</label>
-                    <input type="text" class="form-control" id="Inputusername" aria-describedby="" name="email" placeholder="email" required>
-                 </div>
-                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
-                 </div>
-                 <button type="submit" class="btn btn-primary">Connexion</button>
-                 </form>
-                 </body>
-                 </html>';
-        }
-    }
-}else{
-?>
-<form method="POST">
-    <div class="form-group">
-        <label for="Inputusername">email</label>
-        <input type="text" class="form-control" id="Inputusername" aria-describedby="" name="email" placeholder="email"
-               required>
-    </div>
-    <div class="form-group">
-        <label for="InputPassword">Password</label>
-        <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="password"
-               required>
-    </div>
-    <button type="submit" class="btn btn-primary">Connexion</button>
+<body>
+<h1>Connexion</h1>
+<?php if (isset($error_message)) { ?>
+    <p><?php echo $error_message; ?></p>
+<?php } ?>
+<form method="post" action="login.php">
+    <label for="username">Nom d'utilisateur :</label>
+    <input type="text" name="username" required><br>
+    <label for="password">Mot de passe :</label>
+    <input type="password" name="password" required><br>
+    <input type="submit" value="Se connecter">
 </form>
-<script type="text/javascript" src="assets/MDB5-Pro-6.1.0/js/mdb.min.js"></script>
-<!-- MDB PLUGINS -->
-<script type="text/javascript" src="assets/MDB5-Pro-6.1.0/plugins/js/all.min.js"></script>
+<form method="post" action="login.php">
+    <!-- Utilisé pour permettre aux professeurs de créer des comptes pour les élèves -->
+    <input type="hidden" name="create_student_account" value="1">
+    <input type="submit" value="Se connecter en tant que professeur">
+</form>
+<!-- Lien pour accéder à la page d'inscription des élèves (réservé aux professeurs) -->
+<a href="register_student.php">Inscrire un nouvel élève</a>
 </body>
 </html>
-<?php
-}
-?>
