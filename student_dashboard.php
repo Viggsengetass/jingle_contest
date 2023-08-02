@@ -28,7 +28,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     echo "<h2>Mes jingles soumis :</h2>";
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<p>{$row['jingle_title']} - <a href='{$row['jingle_file_path']}' target='_blank'>Écouter</a></p>";
+        echo "<p>{$row['jingle_title']} - <a href='{$row['jingle_file_path']}' target='_blank'>Écouter</a> - <a href='delete_jingle.php?jingle_id={$row['jingle_id']}'>Supprimer le jingle</a></p>";
     }
 } else {
     echo "<p>Aucun jingle soumis pour le moment.</p>";
@@ -50,6 +50,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<p>Aucune évaluation reçue pour le moment.</p>";
 }
 ?>
+<a href="submit_jingle.php">Déposer un nouveau jingle</a>
 <a href="contest_stats.php">Voir les statistiques du concours</a>
 <a href="logout.php">Se déconnecter</a>
 </body>
