@@ -1,80 +1,225 @@
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+    if ($_SESSION['Etat'] == 'Banni') {
+        header('Location: desactive.php');
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concours de Sonnerie</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        label, select, input[type="text"], input[type="password"], input[type="email"], input[type="submit"] {
-            display: block;
-            margin-bottom: 10px;
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            font-size: 14px;
-        }
-        select, input[type="submit"] {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #555;
-        }
-    </style>
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/testparticles/particles.css">
+    <!-- <link rel="stylesheet" href="assets/MDB5-Pro-6.1.0/plugins/css/all.min.css"> -->
+    <link rel="stylesheet" href="assets/MDB5-Pro-6.1.0/css/mdb.dark.min.css">
+    <title></title>
 </head>
-<body>
-<div class="container">
-    <h1>Concours de Sonnerie</h1>
-    <form method="post" action="register.php">
-        <label for="first_name">Prénom :</label>
-        <input type="text" name="first_name" required>
+<body style="background-color: black;">
+<?php
+//include('assets/includes/Header.php');
+//if (isset($_SESSION["username"])) {
 
-        <label for="last_name">Nom :</label>
-        <input type="text" name="last_name" required>
+?>
+<!-- <div class="sucess">
 
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" name="username" required>
+        <h1>Bienvenue <?php //echo $_SESSION['username'];
+?>!</h1>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" name="password" required>
+        <a href="logout.php">déconnexion</a>
 
-        <label for="email">Email :</label>
-        <input type="email" name="email" required>
 
-        <label for="role">Rôle :</label>
-        <select name="role" required>
-            <option value="">Sélectionner un rôle</option>
-            <option value="student">Élève</option>
-            <option value="teacher">Professeur</option>
-        </select>
+        <div>
 
-        <input type="submit" value="S'inscrire">
-    </form>
-    <p>Déjà un compte ? <a href="login.php">Se connecter</a></p>
+        </div>
+    </div>
+    <?php
+//} else {
+?>
+    <a href="login.php">connexion</a> -->
+<?php
+//}
+?>
+<body style="background-color: black;">
+<div class="main">
+    <!-- particles.js container -->
+    <div id="particles-js">
+
+        <!--background image  -->
+
+        <div class="background-image"></div>
+        <!-- testanime -->
+        <div class="circle-wraper">
+            <div id="circles">
+                <div class="circle c1">
+                    <div class="circle c2">
+                        <div class="circle c3">
+                            <div class="circle c4">
+                                <div class="circle c5">
+                                    <div class="circle c6">
+                                        <div class="circle c7">
+                                            <div class="circle c8">
+
+                                                <h3><div class="button">
+                                                        <a id="push" href="/first/first.php"> <img id="buttonlogo" src="/assets/img/Logo.png" alt="">
+                                                            <span></span>
+                                                            <span></span>
+                                                            <span></span>
+                                                            <span></span>
+                                                        </a>
+                                                    </div></h3></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- testanim -->
+<!-- <div id="animated-example" class="animated rotateInDownRight"></div>
+<button onclick="myFunction()">Reload page</button>
+
+<script>
+   function myFunction() {
+      location.reload();
+   }
+</script> -->
+
+<!-- Lampion mouv -->
+
+<div class="lampion" id="lampion2">
+    <!-- <a href="https://www.amazon.fr/dp/B0B49TP6GL?psc=1&ref=ppx_yo2ov_dt_b_product_details"> -->
+    <img id="lampion_mouv" src="/assets/img/lampion2.webp" alt="" >
+    </a>
+</div>
+
+<!-- lampion mouv 2 -->
+
+<div class="lampion" id="lampion2">
+    <!-- <a href="https://www.amazon.fr/dp/B0B49TP6GL?psc=1&ref=ppx_yo2ov_dt_b_product_details"> -->
+    <img id="lampion_mouv2" src="/assets/img/lampion2.webp" alt="" >
+    </a>
+</div>
+
+<!-- lampion mouv 3
+
+<div class="lampion" id="lampion3"><a href="https://www.amazon.fr/dp/B0B49TP6GL?psc=1&ref=ppx_yo2ov_dt_b_product_details">
+  <img id="lampion_mouv3" src="/assets/img/lampion2.webp" alt="" >
+  </a>
+</div>
+
+<!-- lampion mouv 2 -->
+
+<!-- <div class="lampion" id="lampion4"><a href="https://www.amazon.fr/dp/B0B49TP6GL?psc=1&ref=ppx_yo2ov_dt_b_product_details">
+  <img id="lampion_mouv4" src="/assets/img/lampion2.webp" alt="" >
+  </a>
+</div>
+
+<!-- lampion mouv 2 -->
+
+<!-- <div class="lampion" id="lampion5"><a href="https://www.amazon.fr/dp/B0B49TP6GL?psc=1&ref=ppx_yo2ov_dt_b_product_details">
+  <img id="lampion_mouv5" src="/assets/img/lampion2.webp" alt="" >
+  </a>
+</div> -->
+
+<!-- lampion mouv 2 -->
+
+<!-- <div class="lampion" id="lampion6"><a href="https://www.amazon.fr/dp/B0B49TP6GL?psc=1&ref=ppx_yo2ov_dt_b_product_details">
+  <img id="lampion_mouv6" src="/assets/img/lampion2.webp" alt="" >
+  </a>
+</div> -->
+
+<!-- lampion mouv 2 -->
+
+<!-- <div class="lampion" id="lampion7"><a href="https://www.amazon.fr/dp/B0B49TP6GL?psc=1&ref=ppx_yo2ov_dt_b_product_details">
+  <img id="lampion_mouv7" src="/assets/img/lampion2.webp" alt="" >
+  </a>
+</div> -->
+<!-- lampion mouv 2 -->
+
+<!-- <div class="lampion" id="lampion8"><a href="https://www.amazon.fr/dp/B0B49TP6GL?psc=1&ref=ppx_yo2ov_dt_b_product_details">
+  <img id="lampion_mouv8" src="/assets/img/lampion2.webp" alt="" >
+  </a>
+</div> -->
+
+
+
+<!-- <div class="lampion">
+    <img id="lampion_mouv" src="/assets/img/lampion2.webp" alt="">
+</div> --> --> -->
+
+<!-- testanim -->
+<!-- <div id="animated-example" class="animated rotateInDownRight"></div> -->
+<!-- <button onclick="myFunction()">Reload page</button>
+
+<script>
+   function myFunction() {
+      location.reload();
+   }
+</script> -->
+
+<!-- cadre autres événements -->
+<!-- <div class="event">
+    <div id="cadre" >
+        <img src="/assets/img/cadre.webp" alt="">
+        <div id="contenu"><img src="/assets/img/event.webp" alt="" ></div>
+</div> -->
+
+<!-- test tedd -->
+<!--
+<div class="box">
+    <div class="cards-container">
+<div class="card-container">
+
+  <div class="card">
+
+    <div class="front">
+
+      <img class="zhongli" src="/img/zhongli.png" alt="" height="300px" width="300px">
+
+      <div class="card-titre">
+       <h5>Ce beau jeune homme et
+          personnage géo aux manières élégantes possède des connaissances qui vont bien
+          au-delà de celles des gens ordinaires</h5>
+      </div>
+    </div>
+
+    <div class="back">
+
+      <div class="card-matériaux">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>  -->
+</div>
+
+<video id="transition-video" src="/assets/mp4/transition.mp4" autoplay></video>
+
+
+<script src="/testparticles/particles.js"></script>
+
+<script src="/testparticles/particles.min.js"></script>
+
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        particlesJS.load('particles-js', '/testparticles/particlesjs-config.json', function() {
+            console.log('che che che');
+
+        });
+    });
+</script>
+<script type="text/javascript" src="assets/MDB5-Pro-6.1.0/js/mdb.min.js"></script>
+<!-- MDB PLUGINS -->
+<script type="text/javascript" src="assets/MDB5-Pro-6.1.0/plugins/js/all.min.js"></script>
+</body>
 </body>
 </html>
