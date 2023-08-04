@@ -62,10 +62,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="submit" value="Se connecter">
 </form>
 <p>Pas encore de compte ? <a href="register.php">Créer un compte</a></p>
-<?php
-if (isset($error_message)) {
-    echo "<p>{$error_message}</p>";
-}
-?>
 </body>
 </html>
