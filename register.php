@@ -1,41 +1,35 @@
 <?php
+session_start();
 require_once('config.php');
 
+// Vérifiez si l'utilisateur est déjà connecté, s'il l'est, redirigez-le vers le tableau de bord approprié
+if (isset($_SESSION['user_id'])) {
+    if ($_SESSION['role'] === 'student') {
+        header('Location: student_dashboard.php');
+    } elseif ($_SESSION['role'] === 'teacher') {
+        header('Location: teacher_dashboard.php');
+    }
+    exit();
+}
+
+// Traitement du formulaire d'inscription
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $email = $_POST['email'];
     $role = $_POST['role'];
 
-    // Vérification des données saisies (vous pouvez ajouter plus de validation ici)
-    if (empty($first_name) || empty($last_name) || empty($username) || empty($password) || empty($email) || empty($role)) {
-        $error_message = "Veuillez remplir tous les champs obligatoires.";
+    // Requête pour insérer les informations de l'utilisateur dans la base de données
+    $sql = "INSERT INTO users (first_name, last_name, username, password, email, role) 
+            VALUES ('$first_name', '$last_name', '$username', '$password', '$email', '$role')";
+
+    if (mysqli_query($conn, $sql)) {
+        header('Location: login.php');
+        exit();
     } else {
-        // Vérification si l'utilisateur existe déjà
-        $sql = "SELECT * FROM users WHERE username='$username' OR email='$email'";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            $error_message = "Le nom d'utilisateur ou l'email est déjà utilisé.";
-        } else {
-            // Hashage du mot de passe
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // Insérer les informations du nouvel utilisateur dans la table "users"
-            $sql = "INSERT INTO users (first_name, last_name, username, password, email, role)
-                    VALUES ('$first_name', '$last_name', '$username', '$hashed_password', '$email', '$role')";
-            $result = mysqli_query($conn, $sql);
-
-            if ($result) {
-                // Rediriger l'utilisateur vers la page de connexion après l'inscription réussie
-                header('Location: login.php');
-                exit();
-            } else {
-                $error_message = "Une erreur s'est produite lors de l'inscription. Veuillez réessayer.";
-            }
-        }
+        $error_message = "Une erreur est survenue lors de l'inscription.";
     }
 }
 ?>
@@ -65,9 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <label for="role">Rôle :</label>
     <select name="role" required>
-        <option value="">Sélectionner un rôle</option>
-        <option value="student">Élève</option>
-        <option value="teacher">Professeur</option>
+        <option value="student">Étudiant</option>
+        <option value="teacher">Enseignant</option>
     </select><br>
 
     <input type="submit" value="S'inscrire">
