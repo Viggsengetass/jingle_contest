@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $jingle_tmp_name = $jingle_file['tmp_name'];
             $jingle_name = basename($jingle_file['name']);
-            $jingle_path = 'path/to/upload/directory/' . $jingle_name;
+            $jingle_path = 'data' . $jingle_name;
 
             // Déplacez le fichier téléchargé vers son emplacement final
             if (move_uploaded_file($jingle_tmp_name, $jingle_path)) {
