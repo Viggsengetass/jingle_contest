@@ -15,27 +15,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Vérifiez si le fichier a été correctement téléchargé
     if ($jingle_file['error'] === UPLOAD_ERR_OK) {
-        $jingle_tmp_name = $jingle_file['tmp_name'];
-        $jingle_name = basename($jingle_file['name']);
-        $jingle_path = 'data' . $jingle_name;
+        // Vérification du type de fichier
+        $allowed_extensions = ['mp3'];
+        $file_extension = strtolower(pathinfo($jingle_file['name'], PATHINFO_EXTENSION));
 
-        // Déplacez le fichier téléchargé vers son emplacement final
-        if (move_uploaded_file($jingle_tmp_name, $jingle_path)) {
-            // Enregistrez les informations du jingle dans la base de données
-            $user_id = $_SESSION['user_id'];
-            $submission_date = date('Y-m-d H:i:s');
-
-            $sql = "INSERT INTO jingles (student_id, jingle_title, jingle_file_path, submission_date) 
-                    VALUES ('$user_id', '$jingle_title', '$jingle_path', '$submission_date')";
-
-            if (mysqli_query($conn, $sql)) {
-                header('Location: student_dashboard.php');
-                exit();
-            } else {
-                $error_message = "Une erreur est survenue lors de l'enregistrement du jingle.";
-            }
+        if (!in_array($file_extension, $allowed_extensions)) {
+            $error_message = "Seuls les fichiers MP3 sont autorisés.";
         } else {
-            $error_message = "Une erreur est survenue lors du téléchargement du fichier.";
+            $jingle_tmp_name = $jingle_file['tmp_name'];
+            $jingle_name = basename($jingle_file['name']);
+            $jingle_path = 'path/to/upload/directory/' . $jingle_name;
+
+            // Déplacez le fichier téléchargé vers son emplacement final
+            if (move_uploaded_file($jingle_tmp_name, $jingle_path)) {
+                // Enregistrez les informations du jingle dans la base de données
+                $user_id = $_SESSION['user_id'];
+                $submission_date = date('Y-m-d H:i:s');
+
+                $sql = "INSERT INTO jingles (student_id, jingle_title, jingle_file_path, submission_date) 
+                        VALUES ('$user_id', '$jingle_title', '$jingle_path', '$submission_date')";
+
+                if (mysqli_query($conn, $sql)) {
+                    header('Location: student_dashboard.php');
+                    exit();
+                } else {
+                    $error_message = "Une erreur est survenue lors de l'enregistrement du jingle.";
+                }
+            } else {
+                $error_message = "Une erreur est survenue lors du téléchargement du fichier.";
+            }
         }
     } else {
         $error_message = "Une erreur est survenue lors du téléchargement du fichier.";
@@ -54,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="jingle_title">Titre du jingle :</label>
     <input type="text" name="jingle_title" required><br>
 
-    <label for="jingle_file">Fichier du jingle :</label>
-    <input type="file" name="jingle_file" required><br>
+    <label for="jingle_file">Fichier du jingle (MP3 uniquement) :</label>
+    <input type="file" name="jingle_file" accept=".mp3" required><br>
 
     <input type="submit" value="Soumettre">
 </form>
