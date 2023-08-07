@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérifiez si le fichier a été correctement téléchargé
     if ($jingle_file['error'] === UPLOAD_ERR_OK) {
         // Vérification du type de fichier
-        $allowed_extensions = ['mp3'];
+        $allowed_extensions = ['.mp3'];
         $file_extension = strtolower(pathinfo($jingle_file['name'], PATHINFO_EXTENSION));
 
         if (!in_array($file_extension, $allowed_extensions)) {
