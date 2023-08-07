@@ -94,6 +94,25 @@ if (mysqli_num_rows($result) > 0) {
 }
 ?>
 
+<!-- Afficher les commentaires et retours sur les jingles -->
+<?php
+$comment_query = "SELECT c.comment, j.jingle_title 
+                  FROM comments c 
+                  INNER JOIN jingles j ON c.jingle_id = j.jingle_id
+                  WHERE j.student_id = '$student_id'";
+$comment_result = mysqli_query($conn, $comment_query);
+
+if (mysqli_num_rows($comment_result) > 0) {
+    echo "<h2>Commentaires et retours :</h2>";
+    while ($comment_row = mysqli_fetch_assoc($comment_result)) {
+        echo "<p>Titre du jingle : {$comment_row['jingle_title']}</p>";
+        echo "<p>Commentaire : {$comment_row['comment']}</p>";
+    }
+} else {
+    echo "<p>Aucun commentaire ou retour pour le moment.</p>";
+}
+?>
+
 <!-- Lien pour se déconnecter -->
 <a href='logout.php'>Se déconnecter</a>
 
