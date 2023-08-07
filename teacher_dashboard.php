@@ -64,6 +64,21 @@ if (mysqli_num_rows($result) > 0) {
         echo "<input type='number' name='score' min='0' max='10' required>";
         echo "<input type='submit' value='Noter'>";
         echo "</form>";
+
+        // Afficher les commentaires sur le jingle
+        $comment_query = "SELECT c.*, u.first_name, u.last_name 
+                          FROM comments c 
+                          INNER JOIN users u ON c.teacher_id = u.user_id
+                          WHERE c.jingle_id = '{$row['jingle_id']}'";
+        $comment_result = mysqli_query($conn, $comment_query);
+
+        if (mysqli_num_rows($comment_result) > 0) {
+            echo "<h3>Commentaires et retours :</h3>";
+            while ($comment_row = mysqli_fetch_assoc($comment_result)) {
+                echo "<p>De : {$comment_row['first_name']} {$comment_row['last_name']}</p>";
+                echo "<p>{$comment_row['comment']}</p>";
+            }
+        }
     }
 } else {
     echo "<p>Aucun jingle soumis pour le moment.</p>";
