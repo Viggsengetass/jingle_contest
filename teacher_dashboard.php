@@ -13,10 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['jingle_id']) && isset($_POST['score'])) {
         $jingle_id = $_POST['jingle_id'];
         $score = $_POST['score'];
+        $teacher_id = $_SESSION['user_id'];
 
-        // Effectuez ici la mise à jour de la notation dans la base de données
-        // Utilisez la valeur de $jingle_id pour identifier le jingle et $score pour la note attribuée
-        // Mettez à jour la table jingles avec la note donnée par le professeur
+        // Insertion de la notation dans la table ratings
+        $insert_query = "INSERT INTO ratings (jingle_id, teacher_id, score) 
+                         VALUES ('$jingle_id', '$teacher_id', '$score')";
+        mysqli_query($conn, $insert_query);
+
+        // Calcul de la note moyenne et mise à jour dans la table jingles
+        $update_query = "UPDATE jingles SET average_rating = 
+                         (SELECT AVG(score) FROM ratings WHERE jingle_id = '$jingle_id') 
+                         WHERE jingle_id = '$jingle_id'";
+        mysqli_query($conn, $update_query);
     }
 }
 ?>
@@ -31,7 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- Afficher la liste des jingles soumis par les élèves -->
 <?php
-$query = "SELECT * FROM jingles";
+$query = "SELECT j.*, AVG(r.score) AS average_score 
+          FROM jingles j 
+          LEFT JOIN ratings r ON j.jingle_id = r.jingle_id
+          GROUP BY j.jingle_id";
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {
@@ -41,6 +52,10 @@ if (mysqli_num_rows($result) > 0) {
         echo "<source src='{$row['jingle_file_path']}' type='audio/mpeg'>";
         echo "Votre navigateur ne prend pas en charge l'élément audio.";
         echo "</audio>";
+
+        // Afficher la note moyenne du jingle
+        $average_score = isset($row['average_score']) ? round($row['average_score'], 2) : "Aucune note";
+        echo "<p>Note moyenne : {$average_score}</p>";
 
         // Formulaire de notation du jingle
         echo "<form method='post' action='teacher_dashboard.php'>";
@@ -54,6 +69,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<p>Aucun jingle soumis pour le moment.</p>";
 }
 ?>
+
 <!-- Formulaire pour créer un compte élève -->
 <h2>Créer un compte élève</h2>
 <form method="post" action="register_student.php">
