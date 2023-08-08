@@ -33,15 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jingle_id']) && isset
     $teacher_id = $_SESSION['user_id'];
 
     // Insertion du commentaire dans la table comments
-    $insert_query = "INSERT INTO comments (jingle_id, teacher_id, comment) 
-                     VALUES ('$jingle_id', '$teacher_id', '$comment')";
-    if (mysqli_query($conn, $insert_query)) {
-        // Redirection pour éviter la réinscription du commentaire lors du rafraîchissement de la page
-        header("Location: teacher_dashboard.php");
-        exit();
-    } else {
-        echo "Erreur lors de l'insertion du commentaire : " . mysqli_error($conn);
-    }
+    $insert_query = "INSERT INTO comments (jingle_id, teacher_id, comment, comment_date) 
+                     VALUES ('$jingle_id', '$teacher_id', '$comment', NOW())";
+    mysqli_query($conn, $insert_query);
 }
 ?>
 
@@ -132,6 +126,5 @@ if (mysqli_num_rows($result) > 0) {
 
 <!-- Lien pour se déconnecter -->
 <a href='logout.php'>Se déconnecter</a>
-
 </body>
 </html>
