@@ -14,24 +14,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jingle_title = $_POST['jingle_title'];
     $submission_date = date('Y-m-d H:i:s');
 
-    // Vérification du fichier téléchargé
     if ($_FILES['jingle_file']['error'] === UPLOAD_ERR_OK) {
         $tmp_name = $_FILES['jingle_file']['tmp_name'];
         $file_name = basename($_FILES['jingle_file']['name']);
         $file_path = "uploads/{$file_name}";
 
-        // Déplacer le fichier vers le répertoire de destination
         if (move_uploaded_file($tmp_name, $file_path)) {
-            // Insérer le jingle dans la base de données
             $insert_query = "INSERT INTO jingles (student_id, jingle_title, jingle_file_path, submission_date) 
                              VALUES ('$student_id', '$jingle_title', '$file_path', '$submission_date')";
-            mysqli_query($conn, $insert_query);
-            $success_message = "Jingle soumis avec succès !";
+            if (mysqli_query($conn, $insert_query)) {
+                $success_message = "Jingle soumis avec succès !";
+            } else {
+                $error_message = "Erreur lors de l'insertion du jingle dans la base de données.";
+            }
         } else {
-            $error_message = "Une erreur est survenue lors du téléchargement du fichier.";
+            $error_code = $_FILES['jingle_file']['error'];
+            $error_message = "Erreur lors du téléchargement du fichier (Code : $error_code)";
         }
     } else {
-        $error_message = "Une erreur est survenue lors du téléchargement du fichier.";
+        $error_code = $_FILES['jingle_file']['error'];
+        $error_message = "Erreur lors du téléchargement du fichier (Code : $error_code)";
     }
 }
 ?>
