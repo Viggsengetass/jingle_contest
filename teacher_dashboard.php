@@ -35,8 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $delete_query = "DELETE FROM comments WHERE comment_id = '$comment_id'";
         mysqli_query($conn, $delete_query);
     }
-}
 
+    // Traitement de la soumission de commentaire
+    if (isset($_POST['jingle_id']) && isset($_POST['comment'])) {
+        $jingle_id = $_POST['jingle_id'];
+        $comment = $_POST['comment'];
+        $teacher_id = $_SESSION['user_id'];
+
+        // Insertion du commentaire dans la table comments
+        $insert_query = "INSERT INTO comments (jingle_id, teacher_id, comment) 
+                         VALUES ('$jingle_id', '$teacher_id', '$comment')";
+        mysqli_query($conn, $insert_query);
+    }
+}
 ?>
 
 <!DOCTYPE html>
