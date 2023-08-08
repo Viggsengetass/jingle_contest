@@ -2,7 +2,7 @@
 session_start();
 require_once('config.php');
 
-// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexio
+// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
@@ -24,7 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $jingle_tmp_name = $jingle_file['tmp_name'];
             $jingle_name = basename($jingle_file['name']);
-            $jingle_path = 'data' . $jingle_name;
+            $jingle_path = 'data/' . $jingle_name;
+
+            // Afficher les informations du fichier
+            echo "Jingle TMP Name: $jingle_tmp_name<br>";
+            echo "Jingle Name: $jingle_name<br>";
+            echo "Jingle Path: $jingle_path<br>";
 
             // Déplacez le fichier téléchargé vers son emplacement final
             if (move_uploaded_file($jingle_tmp_name, $jingle_path)) {
@@ -39,14 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: student_dashboard.php');
                     exit();
                 } else {
-                    $error_message = "Une erreur est survenue lors de l'enregistrement du jingle.";
+                    $error_message = "Une erreur est survenue lors de l'enregistrement du jingle: " . mysqli_error($conn);
                 }
             } else {
                 $error_message = "Une erreur est survenue lors du téléchargement du fichier.";
             }
         }
     } else {
-        $error_message = "Une erreur est survenue lors du téléchargement du fichier.";
+        $error_message = "Erreur lors du téléchargement du fichier (Code : {$jingle_file['error']})";
     }
 }
 ?>
