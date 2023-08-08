@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (mysqli_query($conn, $insert_query)) {
                 $success_message = "Jingle soumis avec succès !";
             } else {
-                $error_message = "Erreur lors de l'insertion du jingle dans la base de données: " . mysqli_error($conn);
+                $error_message = "Erreur lors de l'insertion du jingle dans la base de données.";
             }
         } else {
             $error_code = $_FILES['jingle_file']['error'];
@@ -34,6 +34,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $error_code = $_FILES['jingle_file']['error'];
         $error_message = "Erreur lors du téléchargement du fichier (Code : $error_code)";
+    }
+}
+
+// Traitement de la suppression d'un jingle
+if (isset($_GET['delete_jingle_id'])) {
+    $jingle_id = $_GET['delete_jingle_id'];
+
+    $delete_query = "DELETE FROM jingles WHERE jingle_id = '$jingle_id' AND student_id = '$student_id'";
+    if (mysqli_query($conn, $delete_query)) {
+        header('Location: student_dashboard.php');
+        exit();
+    } else {
+        $error_message = "Erreur lors de la suppression du jingle.";
     }
 }
 ?>
@@ -61,6 +74,9 @@ if (mysqli_num_rows($result) > 0) {
         echo "<source src='{$row['jingle_file_path']}' type='audio/mpeg'>";
         echo "Votre navigateur ne prend pas en charge l'élément audio.";
         echo "</audio>";
+
+        // Ajouter un lien pour supprimer le jingle
+        echo "<a href='student_dashboard.php?delete_jingle_id={$row['jingle_id']}'>Supprimer ce jingle</a>";
     }
 } else {
     echo "<p>Aucun jingle soumis pour le moment.</p>";
