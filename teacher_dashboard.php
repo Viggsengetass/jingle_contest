@@ -2,7 +2,7 @@
 session_start();
 require_once('config.php');
 
-// Vérifier le rôle de l'utilisateur
+// Vérifiez si l'utilisateur est connecté en tant que professeur
 if ($_SESSION['role'] !== 'teacher') {
     header('Location: login.php');
     exit();
@@ -35,26 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jingle_id']) && isset
     // Insertion du commentaire dans la table comments
     $insert_query = "INSERT INTO comments (jingle_id, teacher_id, comment) 
                      VALUES ('$jingle_id', '$teacher_id', '$comment')";
-    mysqli_query($conn, $insert_query);
-}
-
-// Fonction pour afficher les commentaires
-function displayComments($conn, $jingle_id) {
-    $comment_query = "SELECT c.*, u.first_name, u.last_name 
-                      FROM comments c 
-                      INNER JOIN users u ON c.teacher_id = u.user_id
-                      WHERE c.jingle_id = '$jingle_id'";
-    $comment_result = mysqli_query($conn, $comment_query);
-
-    if (mysqli_num_rows($comment_result) > 0) {
-        echo "<h3>Commentaires et retours :</h3>";
-        while ($comment_row = mysqli_fetch_assoc($comment_result)) {
-            echo "<p>De : {$comment_row['first_name']} {$comment_row['last_name']}</p>";
-            echo "<p>{$comment_row['comment']}</p>";
-        }
+    if (mysqli_query($conn, $insert_query)) {
+        // Redirection pour éviter la réinscription du commentaire lors du rafraîchissement de la page
+        header("Location: teacher_dashboard.php");
+        exit();
+    } else {
+        echo "Erreur lors de l'insertion du commentaire : " . mysqli_error($conn);
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +90,19 @@ if (mysqli_num_rows($result) > 0) {
         echo "</form>";
 
         // Afficher les commentaires sur le jingle
-        displayComments($conn, $row['jingle_id']);
+        $comment_query = "SELECT c.*, u.first_name, u.last_name 
+                          FROM comments c 
+                          INNER JOIN users u ON c.teacher_id = u.user_id
+                          WHERE c.jingle_id = '{$row['jingle_id']}'";
+        $comment_result = mysqli_query($conn, $comment_query);
+
+        if (mysqli_num_rows($comment_result) > 0) {
+            echo "<h3>Commentaires et retours :</h3>";
+            while ($comment_row = mysqli_fetch_assoc($comment_result)) {
+                echo "<p>De : {$comment_row['first_name']} {$comment_row['last_name']}</p>";
+                echo "<p>{$comment_row['comment']}</p>";
+            }
+        }
     }
 } else {
     echo "<p>Aucun jingle soumis pour le moment.</p>";
@@ -132,5 +132,6 @@ if (mysqli_num_rows($result) > 0) {
 
 <!-- Lien pour se déconnecter -->
 <a href='logout.php'>Se déconnecter</a>
+
 </body>
 </html>
