@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (mysqli_query($conn, $insert_query)) {
                 $success_message = "Jingle soumis avec succès !";
             } else {
-                $error_message = "Erreur lors de l'insertion du jingle dans la base de données.";
+                $error_message = "Erreur lors de l'insertion du jingle dans la base de données: " . mysqli_error($conn);
             }
         } else {
             $error_code = $_FILES['jingle_file']['error'];
@@ -38,12 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tableau de bord élève</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Tableau de bord élève</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
 <body>
 <h1>Tableau de bord élève</h1>
 
