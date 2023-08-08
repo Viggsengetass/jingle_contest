@@ -78,7 +78,7 @@ if (mysqli_num_rows($result) > 0) {
 
 <!-- Afficher les notes attribuées au jingle soumis par l'élève -->
 <?php
-$query = "SELECT r.score 
+$query = "SELECT r.score, j.jingle_title 
           FROM ratings r 
           INNER JOIN jingles j ON r.jingle_id = j.jingle_id
           WHERE j.student_id = '$student_id'";
@@ -87,18 +87,20 @@ $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
     echo "<h2>Vos notes :</h2>";
     while ($row = mysqli_fetch_assoc($result)) {
+        echo "<p>Titre du jingle : {$row['jingle_title']}</p>";
         echo "<p>Note : {$row['score']}</p>";
     }
 } else {
-    echo "<p>Aucune note attribuée à votre jingle pour le moment.</p>";
+    echo "<p>Aucune note attribuée à vos jingles pour le moment.</p>";
 }
 ?>
 
 <!-- Afficher les commentaires et retours sur les jingles -->
 <?php
-$comment_query = "SELECT c.comment, j.jingle_title 
+$comment_query = "SELECT c.comment, j.jingle_title, CONCAT(u.first_name, ' ', u.last_name) AS teacher_name
                   FROM comments c 
                   INNER JOIN jingles j ON c.jingle_id = j.jingle_id
+                  INNER JOIN users u ON c.teacher_id = u.user_id
                   WHERE j.student_id = '$student_id'";
 $comment_result = mysqli_query($conn, $comment_query);
 
@@ -106,6 +108,7 @@ if (mysqli_num_rows($comment_result) > 0) {
     echo "<h2>Commentaires et retours :</h2>";
     while ($comment_row = mysqli_fetch_assoc($comment_result)) {
         echo "<p>Titre du jingle : {$comment_row['jingle_title']}</p>";
+        echo "<p>De : {$comment_row['teacher_name']}</p>";
         echo "<p>Commentaire : {$comment_row['comment']}</p>";
     }
 } else {
