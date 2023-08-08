@@ -9,34 +9,34 @@ if ($_SESSION['role'] !== 'teacher') {
 }
 
 // Traitement de la notation d'un jingle
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jingle_id']) && isset($_POST['score'])) {
-    $jingle_id = $_POST['jingle_id'];
-    $score = $_POST['score'];
-    $teacher_id = $_SESSION['user_id'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['jingle_id']) && isset($_POST['score'])) {
+        $jingle_id = $_POST['jingle_id'];
+        $score = $_POST['score'];
+        $teacher_id = $_SESSION['user_id'];
 
-    // Insertion de la notation dans la table ratings
-    $insert_query = "INSERT INTO ratings (jingle_id, teacher_id, score) 
-                     VALUES ('$jingle_id', '$teacher_id', '$score')";
-    mysqli_query($conn, $insert_query);
+        // Insertion de la notation dans la table ratings
+        $insert_query = "INSERT INTO ratings (jingle_id, teacher_id, score) 
+                         VALUES ('$jingle_id', '$teacher_id', '$score')";
+        mysqli_query($conn, $insert_query);
 
-    // Calcul de la note moyenne et mise à jour dans la table jingles
-    $update_query = "UPDATE jingles SET average_rating = 
-                     (SELECT AVG(score) FROM ratings WHERE jingle_id = '$jingle_id') 
-                     WHERE jingle_id = '$jingle_id'";
-    mysqli_query($conn, $update_query);
+        // Calcul de la note moyenne et mise à jour dans la table jingles
+        $update_query = "UPDATE jingles SET average_rating = 
+                         (SELECT AVG(score) FROM ratings WHERE jingle_id = '$jingle_id') 
+                         WHERE jingle_id = '$jingle_id'";
+        mysqli_query($conn, $update_query);
+    }
+
+    // Traitement de la suppression de commentaire
+    if (isset($_POST['delete_comment_id'])) {
+        $comment_id = $_POST['delete_comment_id'];
+
+        // Suppression du commentaire de la table comments
+        $delete_query = "DELETE FROM comments WHERE comment_id = '$comment_id'";
+        mysqli_query($conn, $delete_query);
+    }
 }
 
-// Traitement de la soumission de commentaire
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['jingle_id']) && isset($_POST['comment'])) {
-    $jingle_id = $_POST['jingle_id'];
-    $comment = $_POST['comment'];
-    $teacher_id = $_SESSION['user_id'];
-
-    // Insertion du commentaire dans la table comments
-    $insert_query = "INSERT INTO comments (jingle_id, teacher_id, comment, comment_date) 
-                     VALUES ('$jingle_id', '$teacher_id', '$comment', NOW())";
-    mysqli_query($conn, $insert_query);
-}
 ?>
 
 <!DOCTYPE html>
@@ -95,6 +95,12 @@ if (mysqli_num_rows($result) > 0) {
             while ($comment_row = mysqli_fetch_assoc($comment_result)) {
                 echo "<p>De : {$comment_row['first_name']} {$comment_row['last_name']}</p>";
                 echo "<p>{$comment_row['comment']}</p>";
+
+                // Formulaire de suppression de commentaire
+                echo "<form method='post' action='teacher_dashboard.php'>";
+                echo "<input type='hidden' name='delete_comment_id' value='{$comment_row['comment_id']}'>";
+                echo "<input type='submit' value='Supprimer ce commentaire'>";
+                echo "</form>";
             }
         }
     }
@@ -126,5 +132,6 @@ if (mysqli_num_rows($result) > 0) {
 
 <!-- Lien pour se déconnecter -->
 <a href='logout.php'>Se déconnecter</a>
+
 </body>
 </html>
