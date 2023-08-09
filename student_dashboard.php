@@ -51,12 +51,12 @@ if (isset($_GET['delete_jingle_id'])) {
 }
 ?>
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Tableau de bord élève</title>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau de bord élève</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
 <body>
 <h1>Tableau de bord élève</h1>
 
@@ -131,32 +131,6 @@ if (mysqli_num_rows($comment_result) > 0) {
     echo "<p>Aucun commentaire ou retour pour le moment.</p>";
 }
 ?>
-
-<!-- Section des notifications -->
-<div id="notifications">
-    <h2>Notifications</h2>
-    <ul id="notification-list">
-        <!-- Les notifications seront ajoutées ici via AJAX -->
-    </ul>
-</div>
-
-<script>
-    // Fonction pour charger les nouvelles notifications via AJAX
-    function loadNotifications() {
-        $.ajax({
-            url: 'get_notifications.php', // Remplacez par le chemin correct vers le script PHP qui récupère les notifications
-            success: function(data) {
-                $('#notification-list').html(data);
-            }
-        });
-    }
-
-    // Charger les notifications au chargement de la page et toutes les 30 secondes
-    $(document).ready(function() {
-        loadNotifications();
-        setInterval(loadNotifications, 30000); // Rafraîchir toutes les 30 secondes
-    });
-</script>
 
 <!-- Lien pour se déconnecter -->
 <a href='logout.php'>Se déconnecter</a>
