@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $jingle_tmp_name = $jingle_file['tmp_name'];
             $jingle_name = basename($jingle_file['name']);
-            $jingle_path = '/uploads/' . $jingle_name;
+            $jingle_path = 'data' . $jingle_name;
 
             // Afficher les informations du fichier
             echo "Jingle TMP Name: $jingle_tmp_name<br>";
