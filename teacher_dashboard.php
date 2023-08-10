@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Calcul de la note moyenne et mise à jour dans la table jingles
         $update_query = "UPDATE jingles SET average_rating = 
                          (SELECT AVG(score) FROM ratings WHERE jingle_id = '$jingle_id') 
-                         WHERE jingle_id = '$jingle_id'";
+                         WHERE jingle_id = '".$jingle_id."'";
         mysqli_query($conn, $update_query);
     }
 
