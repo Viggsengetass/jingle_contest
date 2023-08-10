@@ -68,7 +68,7 @@ $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<p>Jingle soumis par l'élève {$row['student_id']}: {$row['jingle_title']}</p>";
+        echo "<p>Jingle soumis par l'élève {$row['user_id']}: {$row['jingle_title']}</p>";
         echo "<audio controls>";
         echo "<source src='{$row['jingle_file_path']}' type='audio/mpeg'>";
         echo "Votre navigateur ne prend pas en charge l'élément audio.";
