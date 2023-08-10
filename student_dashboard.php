@@ -10,7 +10,7 @@ if ($_SESSION['role'] !== 'student') {
 
 // Traitement de la soumission du jingle
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $student_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
     $jingle_title = $_POST['jingle_title'];
     $submission_date = date('Y-m-d H:i:s');
 
@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_path = "uploads/{$file_name}";
 
         if (move_uploaded_file($tmp_name, $file_path)) {
-            $insert_query = "INSERT INTO jingles (student_id, jingle_title, jingle_file_path, submission_date) 
-                             VALUES ('$student_id', '$jingle_title', '$file_path', '$submission_date')";
+            $insert_query = "INSERT INTO jingles (user_id, jingle_title, jingle_file_path, submission_date) 
+                             VALUES ('$user_id', '$jingle_title', '$file_path', '$submission_date')";
             if (mysqli_query($conn, $insert_query)) {
                 $success_message = "Jingle soumis avec succès !";
             } else {
@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Traitement de la suppression d'un jingle
 if (isset($_GET['delete_jingle_id'])) {
-    $student_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
     $jingle_id = $_GET['delete_jingle_id'];
 
-    $delete_query = "DELETE FROM jingles WHERE jingle_id = '$jingle_id' AND student_id = '$student_id'";
+    $delete_query = "DELETE FROM jingles WHERE jingle_id = '$jingle_id' AND user_id = '$user_id'";
     if (mysqli_query($conn, $delete_query)) {
         header('Location: student_dashboard.php');
         exit();
@@ -63,7 +63,7 @@ if (isset($_GET['delete_jingle_id'])) {
 
 <!-- Afficher la liste des jingles soumis par l'élève -->
 <?php
-$student_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 $query = "SELECT * FROM jingles WHERE user_id = '".$user_id."'";
 $result = mysqli_query($conn, $query);
 
@@ -101,7 +101,7 @@ if (mysqli_num_rows($result) > 0) {
 $query = "SELECT r.score 
           FROM ratings r 
           INNER JOIN jingles j ON r.jingle_id = j.jingle_id
-          WHERE j.student_id = '$student_id'";
+          WHERE j.user_id = '$user_id'";
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {
@@ -119,7 +119,7 @@ if (mysqli_num_rows($result) > 0) {
 $comment_query = "SELECT c.comment, j.jingle_title 
                   FROM comments c 
                   INNER JOIN jingles j ON c.jingle_id = j.jingle_id
-                  WHERE j.student_id = '$student_id'";
+                  WHERE j.user_id = '$user_id'";
 $comment_result = mysqli_query($conn, $comment_query);
 
 if (mysqli_num_rows($comment_result) > 0) {
