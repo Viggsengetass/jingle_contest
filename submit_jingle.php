@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $jingle_tmp_name = $jingle_file['tmp_name'];
             $jingle_name = basename($jingle_file['name']);
-            $jingle_path = 'data/' . $jingle_name;
+            $jingle_path = 'data' . $jingle_name;
 
             if (move_uploaded_file($jingle_tmp_name, $jingle_path)) {
                 $user_id = $_SESSION['user_id'];
