@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Requête pour insérer les informations de l'utilisateur dans la base de données
     $sql = "INSERT INTO users (first_name, last_name, username, password, email, role) 
-            VALUES ('$first_name', '$last_name', '$username', '$password', '$email', '$role')";
+            VALUES ('".$first_name."', '".$last_name."', '".$username."', '".$password."', '".$email."', '".$role."')";
 
     if (mysqli_query($conn, $sql)) {
         header('Location: login.php');
