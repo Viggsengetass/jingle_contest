@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Traitement de la suppression d'un jingle
 if (isset($_GET['delete_jingle_id'])) {
+    $student_id = $_SESSION['user_id'];
     $jingle_id = $_GET['delete_jingle_id'];
 
     $delete_query = "DELETE FROM jingles WHERE jingle_id = '$jingle_id' AND student_id = '$student_id'";
@@ -51,12 +52,12 @@ if (isset($_GET['delete_jingle_id'])) {
 }
 ?>
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Tableau de bord élève</title>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau de bord élève</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
 <body>
 <h1>Tableau de bord élève</h1>
 
