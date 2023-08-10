@@ -64,7 +64,7 @@ if (isset($_GET['delete_jingle_id'])) {
 <!-- Afficher la liste des jingles soumis par l'élève -->
 <?php
 $student_id = $_SESSION['user_id'];
-$query = "SELECT * FROM jingles WHERE student_id = '$student_id'";
+$query = "SELECT * FROM jingles WHERE user_id = '".$user_id."'";
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {
