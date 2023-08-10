@@ -2,20 +2,34 @@
 session_start();
 require_once('config.php');
 
+// Vérifiez si l'utilisateur est déjà connecté, s'il l'est, redirigez-le vers le tableau de bord approprié
+if (isset($_SESSION['user_id'])) {
+    if ($_SESSION['role'] === 'student') {
+        header('Location: student_dashboard.php');
+    } elseif ($_SESSION['role'] === 'teacher') {
+        header('Location: teacher_dashboard.php');
+    }
+    exit();
+}
+
+// Traitement du formulaire de connexion
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE username = '$username'";
-    $result = mysqli_query($conn, $query);
+    // Requête pour récupérer les informations de l'utilisateur à partir de la base de données
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) === 1) {
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['password'])) {
+            // Connexion réussie, définir les informations de l'utilisateur dans la session
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
 
+            // Rediriger vers le tableau de bord approprié selon le rôle de l'utilisateur
             if ($user['role'] === 'student') {
                 header('Location: student_dashboard.php');
             } elseif ($user['role'] === 'teacher') {
@@ -23,10 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             exit();
         } else {
-            $error_message = "Mot de passe incorrect.";
+            $error_message = "Nom d'utilisateur ou mot de passe incorrect.";
         }
     } else {
-        $error_message = "Nom d'utilisateur incorrect.";
+        $error_message = "Nom d'utilisateur ou mot de passe incorrect.";
     }
 }
 ?>
@@ -47,11 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <input type="submit" value="Se connecter">
 </form>
-<p><a href="register.php">S'inscrire</a></p>
-<?php
-if (isset($error_message)) {
-    echo "<p>{$error_message}</p>";
-}
-?>
+<p>Pas encore de compte ? <a href="register.php">Créer un compte</a></p>
 </body>
 </html>
