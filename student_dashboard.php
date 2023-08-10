@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_FILES['jingle_file']['error'] === UPLOAD_ERR_OK) {
         $tmp_name = $_FILES['jingle_file']['tmp_name'];
         $file_name = basename($_FILES['jingle_file']['name']);
-        $file_path = "uploads/{$file_name}";
+        $file_path = "data/{$file_name}";
 
         if (move_uploaded_file($tmp_name, $file_path)) {
             $insert_query = "INSERT INTO jingles (user_id, jingle_title, jingle_file_path, submission_date) 
