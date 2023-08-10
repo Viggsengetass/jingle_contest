@@ -2,20 +2,16 @@
 session_start();
 require_once('config.php');
 
-// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
 }
 
-// Traitement du formulaire de soumission de jingle
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jingle_title = $_POST['jingle_title'];
     $jingle_file = $_FILES['jingle_file'];
 
-    // Vérifiez si le fichier a été correctement téléchargé
     if ($jingle_file['error'] === UPLOAD_ERR_OK) {
-        // Vérification du type de fichier
         $allowed_extensions = ['mp3'];
         $file_extension = strtolower(pathinfo($jingle_file['name'], PATHINFO_EXTENSION));
 
@@ -26,14 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $jingle_name = basename($jingle_file['name']);
             $jingle_path = 'data' . $jingle_name;
 
-            // Afficher les informations du fichier
-            echo "Jingle TMP Name: $jingle_tmp_name<br>";
-            echo "Jingle Name: $jingle_name<br>";
-            echo "Jingle Path: $jingle_path<br>";
-
-            // Déplacez le fichier téléchargé vers son emplacement final
             if (move_uploaded_file($jingle_tmp_name, $jingle_path)) {
-                // Enregistrez les informations du jingle dans la base de données
                 $user_id = $_SESSION['user_id'];
                 $submission_date = date('Y-m-d H:i:s');
 
