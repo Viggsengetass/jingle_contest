@@ -1,235 +1,109 @@
-/* General Styles */
-
+/* Global Styles */
 body {
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3 {
-    margin-top: 0;
-}
-
-a {
-    color: #1DB954;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #0A713E;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 /* Header Styles */
-
-header {
-    background-color: #191414;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.logout-link {
-    font-size: 16px;
-}
-
-/* Main Content Styles */
-
-.container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.jingle-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-}
-
-.jingle-item {
-    background-color: #191414;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.jingle-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.jingle-player {
-    margin-top: auto;
+h1 {
+    color: #1DB954;
+    margin-bottom: 20px;
 }
 
 /* Form Styles */
-
-.form-container {
-    background-color: #191414;
-    border-radius: 8px;
+form {
+    background: #fff;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.form-title {
-    font-size: 24px;
+form label {
     font-weight: bold;
-    margin-bottom: 15px;
 }
 
-.form-input {
-    margin-bottom: 10px;
-}
-
-.form-input label {
-    font-size: 18px;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-input input[type="text"],
-.form-input input[type="file"] {
+form input[type="text"],
+form input[type="file"] {
     width: 100%;
     padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #121212;
-    color: #ffffff;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
-.form-input input[type="text"]::placeholder,
-.form-input input[type="file"]::placeholder {
-    color: #888888;
-}
-
-.form-input input[type="text"]:focus,
-.form-input input[type="file"]:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #1DB954;
-}
-
-.form-input input[type="submit"] {
+form input[type="submit"] {
     background-color: #1DB954;
-    color: #ffffff;
-    padding: 10px 20px;
+    color: #fff;
+    padding: 10px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.form-input input[type="submit"]:hover {
-    background-color: #0A713E;
+/* List Styles */
+h2 {
+    color: #333;
+    margin-top: 30px;
 }
 
-/* Notifications */
-
-.notifications {
-    background-color: #1A1A1A;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-.notifications-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.notification-item {
-    padding: 10px;
+ul li {
     margin-bottom: 10px;
-    border-radius: 5px;
-    background-color: #121212;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.notification-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Audio Player Styles */
+audio {
+    width: 100%;
 }
 
-.notification-text {
-    font-size: 16px;
+/* Link Styles */
+a {
+    color: #1DB954;
+    text-decoration: none;
     margin-right: 10px;
 }
 
-.notification-time {
-    font-size: 14px;
-    color: #888888;
+/* Button Styles */
+.btn {
+    background-color: #1DB954;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    header {
-        padding: 10px;
-    }
-
-    header h1 {
-        font-size: 28px;
-    }
-
-    .jingle-list {
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 15px;
-    }
-
-    .jingle-item {
-        padding: 15px;
-    }
+/* Notification Styles */
+#notifications {
+    margin-top: 30px;
 }
 
-@media (max-width: 480px) {
-    .jingle-list {
-        grid-template-columns: 1fr;
-    }
+/* Success and Error Message Styles */
+.text-success {
+    color: #1DB954;
+}
 
-    .form-input label {
-        font-size: 16px;
-    }
+.text-danger {
+    color: #ff0000;
+}
 
-    .form-input input[type="text"],
-    .form-input input[type="file"] {
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    .form-input input[type="submit"] {
-        padding: 8px 15px;
-        font-size: 14px;
-    }
-
-    .notifications-title {
-        font-size: 20px;
-    }
-
-    .notification-item {
-        padding: 8px;
-        margin-bottom: 8px;
-    }
-
-    .notification-text {
-        font-size: 14px;
-    }
-
-    .notification-time {
-        font-size: 12px;
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    form input[type="text"],
+    form input[type="file"],
+    form input[type="submit"] {
+        width: 100%;
     }
 }
