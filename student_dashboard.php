@@ -14,11 +14,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jingle_title = $_POST['jingle_title'];
     $submission_date = date('Y-m-d H:i:s');
 
-    // ... Votre code de traitement ici ...
+    if ($_FILES['jingle_file']['error'] === UPLOAD_ERR_OK) {
+        $tmp_name = $_FILES['jingle_file']['tmp_name'];
+        $file_name = basename($_FILES['jingle_file']['name']);
+        $file_path = "data/{$file_name}";
 
-    // Rediriger après le traitement
-    header('Location: student_dashboard.php');
-    exit();
+        if (move_uploaded_file($tmp_name, $file_path)) {
+            $insert_query = "INSERT INTO jingles (user_id, jingle_title, jingle_file_path, submission_date) 
+                             VALUES ('$user_id', '$jingle_title', '$file_path', '$submission_date')";
+            if (mysqli_query($conn, $insert_query)) {
+                $success_message = "Jingle soumis avec succès !";
+            } else {
+                $error_message = "Erreur lors de l'insertion du jingle dans la base de données.";
+            }
+        } else {
+            $error_code = $_FILES['jingle_file']['error'];
+            $error_message = "Erreur lors du téléchargement du fichier (Code : $error_code)";
+        }
+    } else {
+        $error_code = $_FILES['jingle_file']['error'];
+        $error_message = "Erreur lors du téléchargement du fichier (Code : $error_code)";
+    }
 }
 
 // Traitement de la suppression d'un jingle
@@ -26,11 +42,13 @@ if (isset($_GET['delete_jingle_id'])) {
     $user_id = $_SESSION['user_id'];
     $jingle_id = $_GET['delete_jingle_id'];
 
-    // ... Votre code de traitement ici ...
-
-    // Rediriger après le traitement
-    header('Location: student_dashboard.php');
-    exit();
+    $delete_query = "DELETE FROM jingles WHERE jingle_id = '$jingle_id' AND user_id = '$user_id'";
+    if (mysqli_query($conn, $delete_query)) {
+        header('Location: student_dashboard.php');
+        exit();
+    } else {
+        $error_message = "Erreur lors de la suppression du jingle.";
+    }
 }
 ?>
 
@@ -86,14 +104,42 @@ if (isset($_GET['delete_jingle_id'])) {
 
                 <input type="submit" value="Soumettre le jingle" class="btn btn-primary">
             </form>
+
             <!-- Afficher les notes attribuées au jingle soumis par l'élève -->
             <?php
-            // ... Votre code pour afficher les notes attribuées ...
+            $query = "SELECT r.score 
+                      FROM ratings r 
+                      INNER JOIN jingles j ON r.jingle_id = j.jingle_id
+                      WHERE j.user_id = '$user_id'";
+            $result = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                echo "<h2>Vos notes :</h2>";
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<p>Note : {$row['score']}</p>";
+                }
+            } else {
+                echo "<p>Aucune note attribuée à votre jingle pour le moment.</p>";
+            }
             ?>
 
             <!-- Afficher les commentaires et retours sur les jingles -->
             <?php
-            // ... Votre code pour afficher les commentaires et retours ...
+            $comment_query = "SELECT c.comment, j.jingle_title 
+                              FROM comments c 
+                              INNER JOIN jingles j ON c.jingle_id = j.jingle_id
+                              WHERE j.user_id = '$user_id'";
+            $comment_result = mysqli_query($conn, $comment_query);
+
+            if (mysqli_num_rows($comment_result) > 0) {
+                echo "<h2>Commentaires et retours :</h2>";
+                while ($comment_row = mysqli_fetch_assoc($comment_result)) {
+                    echo "<p>Titre du jingle : {$comment_row['jingle_title']}</p>";
+                    echo "<p>Commentaire : {$comment_row['comment']}</p>";
+                }
+            } else {
+                echo "<p>Aucun commentaire ou retour pour le moment.</p>";
+            }
             ?>
 
             <!-- Section des notifications -->
@@ -112,7 +158,8 @@ if (isset($_GET['delete_jingle_id'])) {
     // Fonction pour charger les nouvelles notifications via AJAX
     function loadNotifications() {
         $.ajax({
-            url: 'get_notifications.php', // Remplacez par le chemin correct vers le script PHP qui récupère les notifications
+            url: 'get_notifications.php',
+            // Remplacez par le chemin correct vers le script PHP qui récupère les notifications
             success: function(data) {
                 $('#notification-list').html(data);
             }
@@ -140,3 +187,4 @@ if (isset($success_message)) {
 
 </body>
 </html>
+
