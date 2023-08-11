@@ -49,25 +49,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Connexion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/login.css">
 </head>
 <body>
-<div class="login-container">
-    <h1 class="text-center">Connexion</h1>
-    <form method="post" action="login.php">
-        <div class="form-group">
-            <label for="username">Nom d'utilisateur :</label>
-            <input type="text" name="username" class="form-control" required>
-        </div>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="login-container">
+        <h1 class="text-center">Connexion</h1>
+        <form method="post" action="login.php">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
 
-        <div class="form-group">
-            <label for="password">Mot de passe :</label>
-            <input type="password" name="password" class="form-control" required>
-        </div>
+            <div class="form-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
 
-        <input type="submit" value="Se connecter" class="btn btn-primary btn-block">
-    </form>
-    <p class="text-center">Pas encore de compte ? <a href="register.php">Créer un compte</a></p>
+            <input type="submit" value="Se connecter" class="btn btn-primary btn-block">
+        </form>
+        <p class="text-center mt-3">Pas encore de compte ? <a href="register.php">Créer un compte</a></p>
+    </div>
 </div>
 </body>
 </html>
