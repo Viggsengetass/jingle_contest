@@ -56,7 +56,7 @@ if (isset($_GET['delete_jingle_id'])) {
 <html>
 <head>
     <title>Tableau de bord élève</title>
-    <link rel="stylesheet" href="/style/student_dashboard.css/">
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
