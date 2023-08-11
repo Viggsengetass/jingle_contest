@@ -49,18 +49,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Connexion</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<h1>Connexion</h1>
-<form method="post" action="login.php">
-    <label for="username">Nom d'utilisateur :</label>
-    <input type="text" name="username" required><br>
+<div class="login-container">
+    <h1 class="text-center">Connexion</h1>
+    <form method="post" action="login.php">
+        <div class="form-group">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
 
-    <label for="password">Mot de passe :</label>
-    <input type="password" name="password" required><br>
+        <div class="form-group">
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
 
-    <input type="submit" value="Se connecter">
-</form>
-<p>Pas encore de compte ? <a href="register.php">Créer un compte</a></p>
+        <input type="submit" value="Se connecter" class="btn btn-primary btn-block">
+    </form>
+    <p class="text-center">Pas encore de compte ? <a href="register.php">Créer un compte</a></p>
+</div>
 </body>
 </html>
