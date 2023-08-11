@@ -1,6 +1,6 @@
 
 body {
-    background-image: url('background-image.jpg'); /* Remplacez par le chemin de votre image de fond */
+    background-image: url('/assets/img/aurora-1190254.jpg'); /* Remplacez par le chemin de votre image de fond */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
