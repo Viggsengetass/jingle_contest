@@ -15,12 +15,13 @@ body {
 /* En-tête */
 .header {
     background-color: #1DB954;
-    padding: 10px 0;
+    padding: 20px 0;
+    text-align: center;
 }
 
 .header h1 {
     color: #ffffff;
-    font-size: 24px;
+    font-size: 36px;
 }
 
 /* Boutons */
@@ -28,9 +29,10 @@ body {
     background-color: #1DB954;
     border: none;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
@@ -42,12 +44,13 @@ body {
     background-color: #1C1C1C;
     padding: 20px;
     margin: 20px 0;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .jingle audio {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 /* Formulaires */
@@ -61,13 +64,21 @@ body {
     border: none;
     color: #ffffff;
     border-radius: 4px;
-    padding: 10px;
+    padding: 12px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.form-control:focus {
+    background-color: #262626;
+    outline: none;
 }
 
 /* Liens */
 a {
     color: #1DB954;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 a:hover {
@@ -76,33 +87,34 @@ a:hover {
 
 /* Commentaires */
 .comments {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .comment {
     background-color: #262626;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 4px;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .comment p {
     color: #ffffff;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .comment form {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 /* Compte élève */
 .student-form {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .student-form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
     color: #ffffff;
 }
@@ -111,10 +123,19 @@ a:hover {
 .student-form input[type="password"],
 .student-form input[type="email"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
     border: none;
     background-color: #1C1C1C;
     color: #ffffff;
     border-radius: 4px;
+    transition: background-color 0.3s;
 }
+
+.student-form input[type="text"]:focus,
+.student-form input[type="password"]:focus,
+.student-form input[type="email"]:focus {
+    background-color: #262626;
+    outline: none;
+}
+
