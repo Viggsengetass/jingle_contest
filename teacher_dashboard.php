@@ -56,7 +56,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Tableau de bord professeur</title>
     <!-- Intégration de Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/style/teacher_dashboard.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .mt-4 {
+            margin-top: 4rem !important;
+        }
+        .mb-4 {
+            margin-bottom: 4rem !important;
+        }
+        .card {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -119,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Formulaire pour créer un compte élève -->
     <h2 class="mt-4">Créer un compte élève</h2>
-    <form method="post" action="register_student.php">
+    <form method="post" action="register_student.php" class="mb-4">
         <div class="form-group">
             <label for="first_name">Prénom :</label>
             <input type="text" class="form-control" name="first_name" required>
