@@ -22,6 +22,11 @@ body {
 .header h1 {
     color: #ffffff;
     font-size: 36px;
+    transition: color 0.3s;
+}
+
+.header h1:hover {
+    color: #178a3e;
 }
 
 /* Boutons */
@@ -46,6 +51,12 @@ body {
     margin: 20px 0;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.jingle:hover {
+    background-color: #222;
+    transform: translateY(-5px);
 }
 
 .jingle audio {
@@ -57,6 +68,7 @@ body {
 .form-group label {
     font-weight: bold;
     color: #ffffff;
+    transition: color 0.3s;
 }
 
 .form-control {
@@ -96,6 +108,12 @@ a:hover {
     margin: 15px 0;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.comment:hover {
+    background-color: #292929;
+    transform: translateY(-3px);
 }
 
 .comment p {
@@ -117,6 +135,7 @@ a:hover {
     margin-bottom: 8px;
     font-weight: bold;
     color: #ffffff;
+    transition: color 0.3s;
 }
 
 .student-form input[type="text"],
