@@ -1,0 +1,120 @@
+/* Reset des marges et des rembourrages */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Arrière-plan global */
+body {
+    background-color: #121212;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+}
+
+/* En-tête */
+.header {
+    background-color: #1DB954;
+    padding: 10px 0;
+}
+
+.header h1 {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+/* Boutons */
+.btn-primary {
+    background-color: #1DB954;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #178a3e;
+}
+
+/* Jingles */
+.jingle {
+    background-color: #1C1C1C;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.jingle audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Formulaires */
+.form-group label {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.form-control {
+    background-color: #1C1C1C;
+    border: none;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+/* Liens */
+a {
+    color: #1DB954;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #178a3e;
+}
+
+/* Commentaires */
+.comments {
+    margin-top: 20px;
+}
+
+.comment {
+    background-color: #262626;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.comment p {
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.comment form {
+    margin-top: 5px;
+}
+
+/* Compte élève */
+.student-form {
+    margin-top: 20px;
+}
+
+.student-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.student-form input[type="text"],
+.student-form input[type="password"],
+.student-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #1C1C1C;
+    color: #ffffff;
+    border-radius: 4px;
+}
