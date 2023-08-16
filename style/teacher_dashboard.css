@@ -85,8 +85,3 @@ input[type="submit"] {
     background-color: #28a745;
     border-color: #28a745;
 }
-
-.card-body{
-    background-color: red !important;
-    color: #1DB954 !important;
-}
