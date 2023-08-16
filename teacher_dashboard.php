@@ -44,40 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Tableau de bord professeur</title>
+    <link rel="stylesheet" href="/style/teacher_dashboard.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            margin-top: 20px;
-        }
-        .card {
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .card-header {
-            background-color: #007bff;
-            color: white;
-            font-weight: bold;
-        }
-        .card-body {
-            padding: 15px;
-        }
-        audio {
-            width: 100%;
-        }
-        .mb-3 {
-            margin-bottom: 15px;
-        }
-        .mt-2 {
-            margin-top: 10px;
-        }
-        .mt-4 {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 <div class="container">
