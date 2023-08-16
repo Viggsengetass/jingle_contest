@@ -1,43 +1,47 @@
-/* Global styles */
+/* Styles for Teacher Dashboard */
+
+/* Body and Container */
 body {
+    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    margin-top: 50px;
     padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Header styles */
-h1 {
-    color: #333;
+/* Headers and Headings */
+h1, h2, h3 {
+    color: #333333;
 }
 
-/* Card styles */
+/* Jingle Cards */
 .card {
     border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-    background-color: #f8f9fa;
+    background-color: #007bff;
+    color: #ffffff;
     font-weight: bold;
 }
 
 .card-body {
-    padding: 15px;
+    padding: 20px;
 }
 
-/* Audio player styles */
+/* Jingle Audio Player */
 audio {
     width: 100%;
+    margin-bottom: 20px;
 }
 
-/* Form styles */
+/* Jingle Rating and Comment Forms */
 form {
     margin-top: 15px;
 }
@@ -46,38 +50,38 @@ label {
     font-weight: bold;
 }
 
-input[type="number"],
-input[type="text"],
-input[type="password"],
-input[type="email"],
-textarea {
+input[type="number"], textarea {
     width: 100%;
     padding: 10px;
-    margin: 5px 0;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+    background-color: #f8f9fa;
 }
 
-button[type="submit"] {
+input[type="submit"] {
+    margin-top: 10px;
     background-color: #007bff;
-    color: white;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+/* Account Creation Form */
+.form-group {
+    margin-bottom: 15px;
 }
 
-/* Link styles */
-a {
+/* Logout Link */
+.mt-4 {
+    margin-top: 20px;
     color: #007bff;
-    text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
+/* Overriding Bootstrap Styling */
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
 }
