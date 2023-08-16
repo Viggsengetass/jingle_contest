@@ -2,47 +2,37 @@
 session_start();
 require_once('config.php');
 
-// Vérifier le rôle de l'utilisateur
 if ($_SESSION['role'] !== 'teacher') {
     header('Location: login.php');
     exit();
 }
 
-// Traiter la notation d'un jingle
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['jingle_id']) && isset($_POST['score'])) {
         $jingle_id = $_POST['jingle_id'];
         $score = $_POST['score'];
         $teacher_id = $_SESSION['user_id'];
 
-        // Insertion de la notation dans la table ratings
         $insert_query = "INSERT INTO ratings (jingle_id, teacher_id, score) 
                          VALUES ('$jingle_id', '$teacher_id', '$score')";
         mysqli_query($conn, $insert_query);
 
-        // Calcul de la note moyenne et mise à jour dans la table jingles
         $update_query = "UPDATE jingles SET average_rating = 
                          (SELECT AVG(score) FROM ratings WHERE jingle_id = '$jingle_id') 
                          WHERE jingle_id = '".$jingle_id."'";
         mysqli_query($conn, $update_query);
     }
 
-    // Traitement de la suppression de commentaire
     if (isset($_POST['delete_comment_id'])) {
         $comment_id = $_POST['delete_comment_id'];
-
-        // Suppression du commentaire de la table comments
         $delete_query = "DELETE FROM comments WHERE comment_id = '$comment_id'";
         mysqli_query($conn, $delete_query);
     }
 
-    // Traitement de la soumission de commentaire
     if (isset($_POST['jingle_id']) && isset($_POST['comment'])) {
         $jingle_id = $_POST['jingle_id'];
         $comment = $_POST['comment'];
         $teacher_id = $_SESSION['user_id'];
-
-        // Insertion du commentaire dans la table comments
         $insert_query = "INSERT INTO comments (jingle_id, teacher_id, comment) 
                          VALUES ('$jingle_id', '$teacher_id', '$comment')";
         mysqli_query($conn, $insert_query);
@@ -54,15 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Tableau de bord professeur</title>
-    <!-- Intégration de Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/style/teacher_dashboard.css">
+    <link rel="stylesheet" href="/style/teacher_dashboard_custom.css">
 </head>
 <body>
 <div class="container">
     <h1 class="mt-4">Tableau de bord professeur</h1>
 
-    <!-- Afficher la liste des jingles soumis par les élèves -->
     <?php
     $query = "SELECT j.*, AVG(r.score) AS average_score 
               FROM jingles j 
@@ -109,15 +97,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo "</form>";
                 }
             }
-            echo "</div>"; // Fin de la card-body
-            echo "</div>"; // Fin de la card
+            echo "</div>";
+            echo "</div>";
         }
     } else {
         echo "<p>Aucun jingle soumis pour le moment.</p>";
     }
     ?>
 
-    <!-- Formulaire pour créer un compte élève -->
     <h2 class="mt-4">Créer un compte élève</h2>
     <form method="post" action="register_student.php">
         <div class="form-group">
@@ -143,14 +130,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn btn-primary">Créer le compte élève</button>
     </form>
 
-    <!-- Lien pour se déconnecter -->
     <a href='logout.php' class="mt-4">Se déconnecter</a>
-</div> <!-- Fin du container -->
+</div>
 
-<!-- Intégration de Bootstrap JS et jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 </html>

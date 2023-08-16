@@ -1,160 +1,87 @@
-/* Reset des marges et des rembourrages */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Styles for Teacher Dashboard */
 
-/* Arrière-plan global */
+/* Body and Container */
 body {
-    background-color: #121212;
-    font-family: 'Arial', sans-serif;
-    color: #ffffff;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
 }
 
-/* En-tête */
-.header {
-    background-color: #1DB954;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.header h1 {
-    color: #ffffff;
-    font-size: 36px;
-    transition: color 0.3s;
-}
-
-.header h1:hover {
-    color: #178a3e;
-}
-
-/* Boutons */
-.btn-primary {
-    background-color: #1DB954;
-    border: none;
-    color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #178a3e;
-}
-
-/* Jingles */
-.jingle {
-    background-color: #1C1C1C;
+.container {
+    margin-top: 50px;
     padding: 20px;
-    margin: 20px 0;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headers and Headings */
+h1, h2, h3 {
+    color: #333333;
+}
+
+/* Jingle Cards */
+.card {
+    border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.jingle:hover {
-    background-color: #222;
-    transform: translateY(-5px);
+.card-header {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
 }
 
-.jingle audio {
+.card-body {
+    padding: 20px;
+}
+
+/* Jingle Audio Player */
+audio {
     width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Jingle Rating and Comment Forms */
+form {
     margin-top: 15px;
 }
 
-/* Formulaires */
-.form-group label {
+label {
     font-weight: bold;
-    color: #ffffff;
-    transition: color 0.3s;
 }
 
-.form-control {
-    background-color: #1C1C1C;
-    border: none;
-    color: #ffffff;
-    border-radius: 4px;
-    padding: 12px;
+input[type="number"], textarea {
     width: 100%;
-    transition: background-color 0.3s;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f9fa;
 }
 
-.form-control:focus {
-    background-color: #262626;
-    outline: none;
-}
-
-/* Liens */
-a {
-    color: #1DB954;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #178a3e;
-}
-
-/* Commentaires */
-.comments {
-    margin-top: 30px;
-}
-
-.comment {
-    background-color: #262626;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.comment:hover {
-    background-color: #292929;
-    transform: translateY(-3px);
-}
-
-.comment p {
-    color: #ffffff;
-    margin-bottom: 8px;
-}
-
-.comment form {
+input[type="submit"] {
     margin-top: 10px;
-}
-
-/* Compte élève */
-.student-form {
-    margin-top: 30px;
-}
-
-.student-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+    background-color: #007bff;
     color: #ffffff;
-    transition: color 0.3s;
-}
-
-.student-form input[type="text"],
-.student-form input[type="password"],
-.student-form input[type="email"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
     border: none;
-    background-color: #1C1C1C;
-    color: #ffffff;
+    padding: 10px 20px;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
-.student-form input[type="text"]:focus,
-.student-form input[type="password"]:focus,
-.student-form input[type="email"]:focus {
-    background-color: #262626;
-    outline: none;
+/* Account Creation Form */
+.form-group {
+    margin-bottom: 15px;
 }
 
+/* Logout Link */
+.mt-4 {
+    margin-top: 20px;
+    color: #007bff;
+}
+
+/* Overriding Bootstrap Styling */
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
