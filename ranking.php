@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('config.php');
 
 $query = "SELECT j.*, AVG(r.score) AS average_score 
@@ -13,12 +12,12 @@ $result = mysqli_query($conn, $query);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Classement des jingles par notation</title>
+    <title>Classement public des jingles par notation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container mt-5">
-    <h1>Classement des jingles par notation</h1>
+    <h1>Classement public des jingles par notation</h1>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -43,8 +42,7 @@ $result = mysqli_query($conn, $query);
         ?>
         </tbody>
     </table>
-    <a href="teacher_dashboard.php">Retour au tableau de bord professeur</a>
-    <a href="logout.php">Se déconnecter</a>
+    <a href="index.php">Retour à la page d'accueil</a>
 </div>
 </body>
 </html>
