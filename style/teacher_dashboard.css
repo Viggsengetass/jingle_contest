@@ -1,47 +1,43 @@
-/* Styles for Teacher Dashboard */
-
-/* Body and Container */
+/* Global styles */
 body {
-    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    margin-top: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Headers and Headings */
-h1, h2, h3 {
-    color: #333333;
+/* Header styles */
+h1 {
+    color: #333;
 }
 
-/* Jingle Cards */
+/* Card styles */
 .card {
     border: none;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-    background-color: #007bff;
-    color: #ffffff;
+    background-color: #f8f9fa;
     font-weight: bold;
 }
 
 .card-body {
-    padding: 20px;
+    padding: 15px;
 }
 
-/* Jingle Audio Player */
+/* Audio player styles */
 audio {
     width: 100%;
-    margin-bottom: 20px;
 }
 
-/* Jingle Rating and Comment Forms */
+/* Form styles */
 form {
     margin-top: 15px;
 }
@@ -50,38 +46,38 @@ label {
     font-weight: bold;
 }
 
-input[type="number"], textarea {
+input[type="number"],
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
+    margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #f8f9fa;
+    box-sizing: border-box;
 }
 
-input[type="submit"] {
-    margin-top: 10px;
+button[type="submit"] {
     background-color: #007bff;
-    color: #ffffff;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
 }
 
-/* Account Creation Form */
-.form-group {
-    margin-bottom: 15px;
+button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
-/* Logout Link */
-.mt-4 {
-    margin-top: 20px;
+/* Link styles */
+a {
     color: #007bff;
+    text-decoration: none;
 }
 
-/* Overriding Bootstrap Styling */
-.btn-primary {
-    background-color: #28a745;
-    border-color: #28a745;
+a:hover {
+    text-decoration: underline;
 }
