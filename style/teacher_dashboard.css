@@ -84,9 +84,9 @@ header {
 /* Comment Section Styles */
 .comment-section {
     margin-top: 40px;
+    padding: 20px;
     background-color: #f7f7f7;
     border-radius: 8px;
-    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
 }
@@ -108,9 +108,9 @@ header {
 
 .comment-box {
     background-color: #fff;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
@@ -119,39 +119,35 @@ header {
     transform: translateY(-3px);
 }
 
-.comment-box p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
-}
-
 .comment-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .comment-author {
     font-weight: bold;
+    color: #333;
 }
 
 .comment-delete {
-    color: #C0392B;
+    color: #E74C3C;
     cursor: pointer;
     transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .comment-delete:hover {
-    color: #A63428;
+    color: #C0392B;
     transform: scale(1.2);
 }
 
 /* Note Section Styles */
 .note-section {
     margin-top: 40px;
+    padding: 20px;
     background-color: #f7f7f7;
     border-radius: 8px;
-    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
 }
@@ -173,9 +169,9 @@ header {
 
 .note-box {
     background-color: #fff;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
@@ -184,10 +180,16 @@ header {
     transform: translateY(-3px);
 }
 
-.note-box p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
+.note-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.note-teacher {
+    font-weight: bold;
+    color: #333;
 }
 
 /* Create Student Account Form Styles */
@@ -206,7 +208,7 @@ header {
 
 .register-heading {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: #1DB954;
 }
 
