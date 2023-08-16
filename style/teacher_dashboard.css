@@ -33,6 +33,7 @@ h1, h2, h3 {
 
 .card-body {
     padding: 20px;
+    background-color: red !important;
 }
 
 /* Jingle Audio Player */
