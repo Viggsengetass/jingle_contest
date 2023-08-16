@@ -140,3 +140,72 @@ header {
 .logout-link:hover {
     color: #0D7B3D;
 }
+/* ... (Styles précédents) ... */
+
+/* Animate card hover */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Animate buttons */
+.btn {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Comment Section Styles */
+.comment-box {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.comment-box:hover {
+    background-color: #f1f1f1;
+}
+
+.delete-btn {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+    background-color: #C0392B;
+    transform: scale(1.05);
+}
+
+/* Register Form Styles */
+.register-form {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.register-form:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Logout Link Styles */
+.logout-link {
+    transition: color 0.2s ease-in-out;
+}
+
+.logout-link:hover {
+    color: #0D7B3D;
+}
+
+/* Page Entrance Animation */
+body {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
