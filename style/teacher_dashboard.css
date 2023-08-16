@@ -84,6 +84,15 @@ header {
 /* Comment Section Styles */
 .comment-section {
     margin-top: 40px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.comment-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .comment-section h3 {
@@ -98,7 +107,7 @@ header {
 }
 
 .comment-box {
-    background-color: #f7f7f7;
+    background-color: #fff;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -140,6 +149,15 @@ header {
 /* Note Section Styles */
 .note-section {
     margin-top: 40px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.note-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .note-section h3 {
@@ -154,7 +172,7 @@ header {
 }
 
 .note-box {
-    background-color: #f7f7f7;
+    background-color: #fff;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -211,6 +229,7 @@ header {
 
 .register-btn:hover {
     background-color: #0D7B3D;
+    filter: brightness(1.1);
 }
 
 /* Logout Link Styles */
