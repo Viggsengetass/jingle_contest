@@ -76,7 +76,7 @@ header {
 
 /* Comment Section Styles */
 .comment-section {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .comment-section h3 {
@@ -97,16 +97,27 @@ header {
     border-radius: 8px;
     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .comment-box p {
-    margin: 0;
+    margin: 5px 0;
     font-size: 16px;
     line-height: 1.4;
     color: #555;
-    flex-grow: 1;
+    width: 100%;
+}
+
+.comment-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.comment-author {
+    font-weight: bold;
 }
 
 .delete-btn {
@@ -127,7 +138,7 @@ header {
 
 /* Note Section Styles */
 .note-section {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .note-section h3 {
@@ -150,14 +161,15 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .note-box p {
-    margin: 0;
+    margin: 5px 0;
     font-size: 16px;
     line-height: 1.4;
     color: #555;
-    flex-grow: 1;
+    width: 100%;
 }
 
 /* Create Student Account Form Styles */
