@@ -1,87 +1,136 @@
-/* Styles for Teacher Dashboard */
+/* teacher_dashboard_custom.css */
 
-/* Body and Container */
+/* Global Styles */
 body {
-    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
 }
 
 .container {
-    margin-top: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Headers and Headings */
-h1, h2, h3 {
-    color: #333333;
+/* Header Styles */
+h1 {
+    color: #1DB954;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Jingle Cards */
+/* Card Styles */
 .card {
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-    background-color: #007bff;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.card-body {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
 }
 
-/* Jingle Audio Player */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Jingle Audio Player Styles */
 audio {
     width: 100%;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    outline: none;
 }
 
-/* Jingle Rating and Comment Forms */
-form {
-    margin-top: 15px;
-}
-
-label {
-    font-weight: bold;
-}
-
-input[type="number"], textarea {
+/* Form Styles */
+.form-control {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: border-color 0.2s ease-in-out;
 }
 
-input[type="submit"] {
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #ffffff;
+.form-control:focus {
+    border-color: #1DB954;
+}
+
+.btn-primary {
+    background-color: #1DB954;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
-/* Account Creation Form */
-.form-group {
-    margin-bottom: 15px;
+.btn-primary:hover {
+    background-color: #0D7B3D;
 }
 
-/* Logout Link */
-.mt-4 {
+/* Comment Section Styles */
+h3 {
+    color: #1DB954;
+    font-size: 24px;
     margin-top: 20px;
-    color: #007bff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Overriding Bootstrap Styling */
-.btn-primary {
-    background-color: #28a745;
-    border-color: #28a745;
+/* Logout Link Styles */
+a {
+    color: #1DB954;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: color 0.2s ease-in-out;
 }
+
+a:hover {
+    color: #0D7B3D;
+}
+
+/* Create Student Account Form Styles */
+.form-group label {
+    color: #1DB954;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* Animated Background */
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8));
+    opacity: 0;
+    pointer-events: none;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add more animations as needed */
