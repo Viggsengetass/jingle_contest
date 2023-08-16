@@ -21,8 +21,9 @@ h1, h2, h3 {
 /* Jingle Cards */
 .card {
     border: none;
-    border-radius: 100px;
+    border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: red !important;
 }
 
 .card-header {
