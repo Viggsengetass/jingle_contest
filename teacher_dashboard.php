@@ -45,7 +45,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <title>Tableau de bord professeur</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/style/teacher_dashboard.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        audio {
+            width: 100%;
+        }
+        .mb-3 {
+            margin-bottom: 15px;
+        }
+        .mt-2 {
+            margin-top: 10px;
+        }
+        .mt-4 {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -63,23 +95,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<div class='card mt-4'>";
             echo "<div class='card-header'>Jingle soumis par l'élève {$row['user_id']}: {$row['jingle_title']}</div>";
             echo "<div class='card-body'>";
-            echo "<audio controls>";
+            echo "<audio controls class='mb-3'>";
             echo "<source src='{$row['jingle_file_path']}' type='audio/mpeg'>";
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio>";
             $average_score = isset($row['average_score']) ? round($row['average_score'], 2) : "Aucune note";
-            echo "<p>Note moyenne : {$average_score}</p>";
-            echo "<form method='post' action='teacher_dashboard.php'>";
+            echo "<p class='mb-3'>Note moyenne : {$average_score}</p>";
+            echo "<form method='post' action='teacher_dashboard.php' class='mb-3'>";
             echo "<input type='hidden' name='jingle_id' value='{$row['jingle_id']}'>";
             echo "<label for='score'>Note :</label>";
-            echo "<input type='number' name='score' min='0' max='10' required>";
-            echo "<input type='submit' value='Noter'>";
+            echo "<input type='number' name='score' min='0' max='10' required class='form-control'>";
+            echo "<input type='submit' value='Noter' class='btn btn-primary mt-2'>";
             echo "</form>";
-            echo "<form method='post' action='teacher_dashboard.php'>";
+            echo "<form method='post' action='teacher_dashboard.php' class='mb-3'>";
             echo "<input type='hidden' name='jingle_id' value='{$row['jingle_id']}'>";
             echo "<label for='comment'>Commentaire :</label>";
-            echo "<textarea name='comment' rows='3' required></textarea>";
-            echo "<input type='submit' value='Commenter'>";
+            echo "<textarea name='comment' rows='3' required class='form-control'></textarea>";
+            echo "<input type='submit' value='Commenter' class='btn btn-primary mt-2'>";
             echo "</form>";
             $comment_query = "SELECT c.*, u.first_name, u.last_name 
                               FROM comments c 
@@ -91,9 +123,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 while ($comment_row = mysqli_fetch_assoc($comment_result)) {
                     echo "<p>De : {$comment_row['first_name']} {$comment_row['last_name']}</p>";
                     echo "<p>{$comment_row['comment']}</p>";
-                    echo "<form method='post' action='teacher_dashboard.php'>";
+                    echo "<form method='post' action='teacher_dashboard.php' class='mb-3'>";
                     echo "<input type='hidden' name='delete_comment_id' value='{$comment_row['comment_id']}'>";
-                    echo "<input type='submit' value='Supprimer ce commentaire'>";
+                    echo "<input type='submit' value='Supprimer ce commentaire' class='btn btn-danger'>";
                     echo "</form>";
                 }
             }
@@ -106,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ?>
 
     <h2 class="mt-4">Créer un compte élève</h2>
-    <form method="post" action="register_student.php">
+    <form method="post" action="register_student.php" class="mb-3">
         <div class="form-group">
             <label for="first_name">Prénom :</label>
             <input type="text" class="form-control" name="first_name" required>
