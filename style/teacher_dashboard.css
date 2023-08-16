@@ -80,9 +80,14 @@ header {
 }
 
 .comment-section h3 {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 15px;
     color: #1DB954;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
 }
 
 .comment-box {
@@ -90,12 +95,18 @@ header {
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .comment-box p {
     margin: 0;
     font-size: 16px;
     line-height: 1.4;
+    color: #555;
+    flex-grow: 1;
 }
 
 .delete-btn {
@@ -106,11 +117,47 @@ header {
     color: #fff;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .delete-btn:hover {
     background-color: #C0392B;
+    transform: scale(1.05);
+}
+
+/* Note Section Styles */
+.note-section {
+    margin-top: 20px;
+}
+
+.note-section h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #1DB954;
+}
+
+.note-list {
+    list-style: none;
+    padding: 0;
+}
+
+.note-box {
+    background-color: #f7f7f7;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-box p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #555;
+    flex-grow: 1;
 }
 
 /* Create Student Account Form Styles */
@@ -118,28 +165,37 @@ header {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.register-form h2 {
+.register-heading {
     font-size: 24px;
     margin-bottom: 15px;
     color: #1DB954;
 }
 
-/* Logout Link Styles */
-.logout-link {
-    display: block;
-    margin-top: 20px;
-    color: #1DB954;
+.register-form .form-group label {
     font-size: 16px;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
+    color: #333;
+    font-weight: bold;
 }
 
-.logout-link:hover {
-    color: #0D7B3D;
+.register-btn {
+    background-color: #1DB954;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
+
+.register-btn:hover {
+    background-color: #0D7B3D;
+}
+
 /* ... (Styles précédents) ... */
 
 /* Animate card hover */
@@ -156,43 +212,6 @@ header {
 
 .btn:hover {
     filter: brightness(1.1);
-}
-
-/* Comment Section Styles */
-.comment-box {
-    transition: background-color 0.2s ease-in-out;
-}
-
-.comment-box:hover {
-    background-color: #f1f1f1;
-}
-
-.delete-btn {
-    transition: background-color 0.2s ease-in-out;
-}
-
-.delete-btn:hover {
-    background-color: #C0392B;
-    transform: scale(1.05);
-}
-
-/* Register Form Styles */
-.register-form {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s ease-in-out;
-}
-
-.register-form:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Logout Link Styles */
-.logout-link {
-    transition: color 0.2s ease-in-out;
-}
-
-.logout-link:hover {
-    color: #0D7B3D;
 }
 
 /* Page Entrance Animation */
