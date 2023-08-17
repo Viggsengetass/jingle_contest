@@ -4,9 +4,11 @@ body {
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 /* Styles spécifiques à la barre de navigation */
@@ -34,21 +36,11 @@ body {
 }
 
 /* Animation du texte */
-.text-center {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .text-animation {
     color: #fff;
     font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
     font-size: 1em;
     font-weight: 700;
-}
-
-.text-animation span {
     display: inline-block;
     position: relative;
     transform-style: preserve-3d;
@@ -90,34 +82,6 @@ body {
 
 .text-animation span + span {
     margin-left: 0.05em;
-}
-
-@media (min-width: 20em) {
-    .text-animation {
-        font-size: 2em;
-    }
-    .text-animation span::before,
-    .text-animation span::after {
-        display: block;
-    }
-}
-
-@media (min-width: 30em) {
-    .text-animation {
-        font-size: 3em;
-    }
-}
-
-@media (min-width: 40em) {
-    .text-animation {
-        font-size: 5em;
-    }
-}
-
-@media (min-width: 60em) {
-    .text-animation {
-        font-size: 8em;
-    }
 }
 
 /* Bouton de classement */
