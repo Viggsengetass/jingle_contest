@@ -35,7 +35,23 @@
 
 <div class="container mt-5">
     <div class="text-center mb-4">
-        <h1 class="display-4 animated fadeInDown">Bienvenue sur Ma Plateforme</h1>
+        <p aria-label="CodePen">
+            <span data-text="J">J</span>
+            <span data-text="I">I</span>
+            <span data-text="N">N</span>
+            <span data-text="G">G</span>
+            <span data-text="L">L</span>
+            <span data-text="E">E</span>
+            <span data-text="-">-</span>
+            <span data-text="C">C</span>
+            <span data-text="O">O</span>
+            <span data-text="N">N</span>
+            <span data-text="T">T</span>
+            <span data-text="E">E</span>
+            <span data-text="S">S</span>
+            <span data-text="T">T</span>
+        </p>
+
         <p class="lead animated fadeInUp">Découvrez et évaluez les jingles soumis par les élèves dans notre concours de création musicale !</p>
     </div>
     <div class="text-center mt-3 animated fadeIn">
