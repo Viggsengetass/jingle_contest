@@ -37,7 +37,6 @@ body {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 56px); /* Subtract navbar height */
-    flex-direction: column;
 }
 
 .text-animation {
@@ -45,11 +44,15 @@ body {
     color: #fff;
     font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
     font-weight: 700;
-    text-align: center;
+    display: inline-block;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 500;
+    -webkit-font-smoothing: antialiased;
     line-height: 1;
 }
 
-.animate-text {
+.text-animation span {
     display: inline-block;
     position: relative;
     transform-style: preserve-3d;
@@ -57,8 +60,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.animate-text::before,
-.animate-text::after {
+.text-animation span::before,
+.text-animation span::after {
     display: none;
     position: absolute;
     top: 0;
@@ -68,37 +71,37 @@ body {
     content: attr(data-text);
 }
 
-.animate-text::before {
+.text-animation span::before {
     z-index: 1;
     color: rgba(0, 0, 0, 0.2);
     transform: scale(1.1, 1) skew(0deg, 20deg);
 }
 
-.animate-text::after {
+.text-animation span::after {
     z-index: 2;
     color: #6e5e60;
     text-shadow: -1px 0 1px #6e5e60, 1px 0 1px rgba(0, 0, 0, 0.8);
     transform: rotateY(-40deg);
 }
 
-.animate-text:hover::before {
+.text-animation span:hover::before {
     transform: scale(1.1, 1) skew(0deg, 5deg);
 }
 
-.animate-text:hover::after {
+.text-animation span:hover::after {
     transform: rotateY(-10deg);
 }
 
-.animate-text + .animate-text {
-    margin-top: 10px;
+.text-animation span + span {
+    margin-left: 0.05em;
 }
 
 @media (min-width: 20em) {
     .text-animation {
         font-size: 2em;
     }
-    .animate-text::before,
-    .animate-text::after {
+    .text-animation span::before,
+    .text-animation span::after {
         display: block;
     }
 }
