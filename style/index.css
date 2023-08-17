@@ -4,6 +4,7 @@ body {
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 /* Styles spécifiques à la barre de navigation */
@@ -45,7 +46,7 @@ body {
     font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
     font-weight: 700;
     display: inline-block;
-    white-space: nowrap;
+    white-space: nowrap; /* Ajout de cette ligne pour éviter le retour à la ligne */
     position: relative;
     transform-style: preserve-3d;
     perspective: 500;
@@ -96,11 +97,39 @@ body {
     margin-left: 0.05em;
 }
 
+@media (min-width: 20em) {
+    .text-animation {
+        font-size: 2em;
+    }
+    .text-animation span::before,
+    .text-animation span::after {
+        display: block;
+    }
+}
+
+@media (min-width: 30em) {
+    .text-animation {
+        font-size: 3em;
+    }
+}
+
+@media (min-width: 40em) {
+    .text-animation {
+        font-size: 5em;
+    }
+}
+
+@media (min-width: 60em) {
+    .text-animation {
+        font-size: 8em;
+    }
+}
+
 /* Style pour le contenu principal */
 .main-content {
     padding: 30px;
     margin-top: 20px;
-    text-align: center;
+    text-align: center; /* Ajout de cette ligne pour centrer le contenu */
 }
 
 .display-4 {
