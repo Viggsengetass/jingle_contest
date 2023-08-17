@@ -41,23 +41,6 @@
     <div class="text-center mt-3 animated fadeIn">
         <a href="ranking.php" class="btn btn-primary btn-lg">Voir le classement</a>
     </div>
-    <!-- Animation -->
-    <p aria-label="CodePen" class="animated fadeInUp delay-1s">
-        <span data-text="J">J</span>
-        <span data-text="I">I</span>
-        <span data-text="N">N</span>
-        <span data-text="G">G</span>
-        <span data-text="L">L</span>
-        <span data-text="E">E</span>
-        <span data-text="-">-</span>
-        <span data-text="C">C</span>
-        <span data-text="O">O</span>
-        <span data-text="N">N</span>
-        <span data-text="T">T</span>
-        <span data-text="E">E</span>
-        <span data-text="S">S</span>
-        <span data-text="T">T</span>
-    </p>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
