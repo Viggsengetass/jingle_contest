@@ -10,7 +10,7 @@
 <body>
 <?php include 'header.php'; ?>
 
-<div>
+<div id="global">
     <p aria-label="CodePen">
         <span data-text="J">J</span>
         <span data-text="I">I</span>

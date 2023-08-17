@@ -3,7 +3,6 @@ p {
     font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
     font-size: 1em;
     font-weight: 700;
-    justify-content: center;
 }
 
 p span {
@@ -90,4 +89,8 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #6e5e60;
+}
+
+#global{
+    justify-content: center;
 }
