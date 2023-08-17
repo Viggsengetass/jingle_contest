@@ -1,59 +1,11 @@
-/* Styles généraux */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-/* Styles spécifiques à la barre de navigation */
-.navbar {
-    background-color: #343a40;
-}
-
-.navbar-brand {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.navbar-toggler-icon {
-    background-color: #ffffff;
-}
-
-.navbar-nav .nav-link {
-    color: white;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #007bff;
-}
-
-/* Animation du texte */
-.text-animation-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 56px); /* Subtract navbar height */
-}
-
-.text-animation {
-    font-size: 3em;
-    line-height: 1;
+p {
     color: #fff;
     font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
+    font-size: 1em;
     font-weight: 700;
-    display: inline-block;
-    white-space: nowrap; /* Ajout de cette ligne pour éviter le retour à la ligne */
-    position: relative;
-    transform-style: preserve-3d;
-    perspective: 500;
-    -webkit-font-smoothing: antialiased;
 }
 
-.text-animation span {
+p span {
     display: inline-block;
     position: relative;
     transform-style: preserve-3d;
@@ -61,8 +13,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.text-animation span::before,
-.text-animation span::after {
+p span::before,
+p span::after {
     display: none;
     position: absolute;
     top: 0;
@@ -72,79 +24,69 @@ body {
     content: attr(data-text);
 }
 
-.text-animation span::before {
+p span::before {
     z-index: 1;
-    color: rgba(0, 0, 0, 0.2);
+    color: rgba(0,0,0,0.2);
     transform: scale(1.1, 1) skew(0deg, 20deg);
 }
 
-.text-animation span::after {
+p span::after {
     z-index: 2;
     color: #6e5e60;
-    text-shadow: -1px 0 1px #6e5e60, 1px 0 1px rgba(0, 0, 0, 0.8);
+    text-shadow: -1px 0 1px #6e5e60, 1px 0 1px rgba(0,0,0,0.8);
     transform: rotateY(-40deg);
 }
 
-.text-animation span:hover::before {
+p span:hover::before {
     transform: scale(1.1, 1) skew(0deg, 5deg);
 }
 
-.text-animation span:hover::after {
+p span:hover::after {
     transform: rotateY(-10deg);
 }
 
-.text-animation span + span {
+p span + span {
     margin-left: 0.05em;
 }
 
 @media (min-width: 20em) {
-    .text-animation {
+    p {
         font-size: 2em;
     }
-    .text-animation span::before,
-    .text-animation span::after {
+    p span::before,
+    p span::after {
         display: block;
     }
 }
 
 @media (min-width: 30em) {
-    .text-animation {
+    p {
         font-size: 3em;
     }
 }
 
 @media (min-width: 40em) {
-    .text-animation {
+    p {
         font-size: 5em;
     }
 }
 
 @media (min-width: 60em) {
-    .text-animation {
+    p {
         font-size: 8em;
     }
 }
 
-/* Style pour le contenu principal */
-.main-content {
-    padding: 30px;
-    margin-top: 20px;
-    text-align: center; /* Ajout de cette ligne pour centrer le contenu */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
-.display-4 {
-    font-size: 40px;
-}
-
-.lead {
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-/* Effet de survol sur le bouton */
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-    transform: scale(1.05);
-    transition: 0.3s;
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6e5e60;
 }
