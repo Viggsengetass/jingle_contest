@@ -9,21 +9,24 @@
 </head>
 <body>
 <?php include 'header.php'; ?>
-<p aria-label="CodePen">
-    <span data-text="J">J</span>
-    <span data-text="I">I</span>
-    <span data-text="N">N</span>
-    <span data-text="G">G</span>
-    <span data-text="L">L</span>
-    <span data-text="E">E</span>
-    <span data-text="-">-</span>
-    <span data-text="C">C</span>
-    <span data-text="O">O</span>
-    <span data-text="N">N</span>
-    <span data-text="T">T</span>
-    <span data-text="E">E</span>
-    <span data-text="S">S</span>
-    <span data-text="T">T</span>
-</p>
+
+<div>
+    <p aria-label="CodePen">
+        <span data-text="J">J</span>
+        <span data-text="I">I</span>
+        <span data-text="N">N</span>
+        <span data-text="G">G</span>
+        <span data-text="L">L</span>
+        <span data-text="E">E</span>
+        <span data-text="-">-</span>
+        <span data-text="C">C</span>
+        <span data-text="O">O</span>
+        <span data-text="N">N</span>
+        <span data-text="T">T</span>
+        <span data-text="E">E</span>
+        <span data-text="S">S</span>
+        <span data-text="T">T</span>
+    </p>
+</div>
 </body>
 </html>
