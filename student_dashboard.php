@@ -55,6 +55,7 @@ if (isset($_GET['delete_jingle_id'])) {
 <!DOCTYPE html>
 <html>
 <head>
+    <?php include 'header.php'; ?>
     <title>Tableau de bord élève</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/student_dashboard.css">
