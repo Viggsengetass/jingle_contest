@@ -86,7 +86,8 @@ body {
 
 body {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     background-color: #6e5e60;
 }
