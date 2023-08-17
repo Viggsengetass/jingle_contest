@@ -6,13 +6,11 @@ body {
     padding: 0;
     height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 /* Styles spécifiques à la barre de navigation */
 .navbar {
-    margin-bottom: 20px;
     background-color: #343a40;
 }
 
@@ -35,30 +33,22 @@ body {
     color: #007bff;
 }
 
-/* Bouton de classement */
-.btn-primary {
-    font-size: 22px;
-    padding: 12px 40px;
-    border-radius: 30px;
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-/* Animation d'apparition */
-.animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-}
-
 /* Animation du texte */
-p {
+.text-center {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-animation {
     color: #fff;
     font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
     font-size: 1em;
     font-weight: 700;
 }
 
-p span {
+.text-animation span {
     display: inline-block;
     position: relative;
     transform-style: preserve-3d;
@@ -66,8 +56,8 @@ p span {
     -webkit-font-smoothing: antialiased;
 }
 
-p span::before,
-p span::after {
+.text-animation span::before,
+.text-animation span::after {
     display: none;
     position: absolute;
     top: 0;
@@ -77,55 +67,89 @@ p span::after {
     content: attr(data-text);
 }
 
-p span::before {
+.text-animation span::before {
     z-index: 1;
     color: rgba(0, 0, 0, 0.2);
     transform: scale(1.1, 1) skew(0deg, 20deg);
 }
 
-p span::after {
+.text-animation span::after {
     z-index: 2;
     color: #6e5e60;
     text-shadow: -1px 0 1px #6e5e60, 1px 0 1px rgba(0, 0, 0, 0.8);
     transform: rotateY(-40deg);
 }
 
-p span:hover::before {
+.text-animation span:hover::before {
     transform: scale(1.1, 1) skew(0deg, 5deg);
 }
 
-p span:hover::after {
+.text-animation span:hover::after {
     transform: rotateY(-10deg);
 }
 
-p span + span {
+.text-animation span + span {
     margin-left: 0.05em;
 }
 
 @media (min-width: 20em) {
-    p {
+    .text-animation {
         font-size: 2em;
     }
-    p span::before,
-    p span::after {
+    .text-animation span::before,
+    .text-animation span::after {
         display: block;
     }
 }
 
 @media (min-width: 30em) {
-    p {
+    .text-animation {
         font-size: 3em;
     }
 }
 
 @media (min-width: 40em) {
-    p {
+    .text-animation {
         font-size: 5em;
     }
 }
 
 @media (min-width: 60em) {
-    p {
+    .text-animation {
         font-size: 8em;
     }
+}
+
+/* Bouton de classement */
+.btn-primary {
+    font-size: 22px;
+    padding: 12px 40px;
+    border-radius: 30px;
+    background-color: #007bff;
+    border-color: #007bff;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Style pour le contenu principal */
+.main-content {
+    text-align: center;
+    padding: 30px;
+}
+
+.display-4 {
+    font-size: 40px;
+}
+
+.lead {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Effet de survol sur le bouton */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: scale(1.05);
+    transition: 0.3s;
 }
