@@ -8,53 +8,18 @@ body {
     text-align: center;
 }
 
+/* Styles spécifiques à la barre de navigation */
 .navbar {
-    background-color: #333;
-    color: #fff;
-}
-
-.navbar a {
-    color: #fff;
-}
-
-/* Styles spécifiques à la barre de tâches */
-.navbar-inner {
-    padding: 10px 0;
-}
-
-.navbar .nav {
-    margin-left: 50px;
-}
-
-.navbar .nav li {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-/* Styles spécifiques à la page d'accueil */
-.container h1 {
-    font-size: 28px;
     margin-bottom: 20px;
 }
 
-.container p {
-    font-size: 18px;
+.navbar-brand {
+    font-size: 24px;
 }
 
-/* Boutons */
-.btn {
-    padding: 10px 20px;
-    font-size: 16px;
-}
-
+/* Bouton de classement */
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    font-size: 18px;
 }
 
 /* Liens */
@@ -63,26 +28,7 @@ a {
     color: #007bff;
 }
 
-/* Liens dans la barre de tâches */
-.navbar a:hover {
-    color: #fff;
-}
-
-/* Liens de déconnexion et d'accès au tableau de bord */
-.navbar .nav .btn {
-    color: #fff;
-}
-
-/* Liens de déconnexion et d'accès au tableau de bord au survol */
-.navbar .nav .btn:hover {
-    color: #333;
-    background-color: #fff;
-}
-
-/* Liens de déconnexion et d'accès au tableau de bord en version mobile */
-@media (max-width: 768px) {
-    .navbar .nav .btn {
-        display: block;
-        margin-top: 10px;
-    }
+/* Liens au survol */
+a:hover {
+    text-decoration: underline;
 }
