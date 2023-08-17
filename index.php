@@ -4,6 +4,7 @@
     <title>Accueil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -33,10 +34,12 @@
 </nav>
 
 <div class="container mt-5">
-    <h1 class="text-center">Bienvenue sur Ma Plateforme</h1>
-    <p class="text-center">Découvrez les jingles soumis par les élèves et consultez le classement.</p>
-    <div class="text-center mt-3">
-        <a href="ranking.php" class="btn btn-primary">Voir le classement</a>
+    <div class="text-center mb-4">
+        <h1 class="display-4 animated fadeInDown">Bienvenue sur Ma Plateforme</h1>
+        <p class="lead animated fadeInUp">Découvrez et évaluez les jingles soumis par les élèves dans notre concours de création musicale !</p>
+    </div>
+    <div class="text-center mt-3 animated fadeIn">
+        <a href="ranking.php" class="btn btn-primary btn-lg">Voir le classement</a>
     </div>
 </div>
 
