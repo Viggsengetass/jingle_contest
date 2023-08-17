@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Accueil</title>
+    <?php include 'common.php'; ?>
     <link rel="stylesheet" href="/style/test.css">
 </head>
 <body>
