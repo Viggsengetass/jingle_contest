@@ -49,6 +49,7 @@ body {
     transform-style: preserve-3d;
     perspective: 500;
     -webkit-font-smoothing: antialiased;
+    margin: 0 auto; /* Centrage horizontal */
 }
 
 .text-animation span {
