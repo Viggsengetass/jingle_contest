@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="/style/test.css">
 </head>
 <body>
-<?php include 'header.php'; ?>
-
 <p aria-label="CodePen">
     <span data-text="J">J</span>
     <span data-text="I">I</span>
