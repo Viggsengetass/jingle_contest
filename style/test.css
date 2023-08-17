@@ -87,10 +87,7 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: #6e5e60;
-}
-
-#global{
-    justify-content: center;
 }
