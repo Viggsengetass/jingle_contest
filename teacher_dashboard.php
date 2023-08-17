@@ -44,11 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Tableau de bord professeur</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <?php include 'common.php'; ?>
     <link rel="stylesheet" href="/style/teacher_dashboard.css">
 
 </head>
 <body>
+<?php include 'header.php'; ?>
+
 <div class="container">
     <h1 class="mt-4">Tableau de bord professeur</h1>
 

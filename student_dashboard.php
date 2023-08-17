@@ -55,13 +55,13 @@ if (isset($_GET['delete_jingle_id'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include 'header.php'; ?>
     <title>Tableau de bord élève</title>
     <?php include 'common.php'; ?>
     <link rel="stylesheet" href="/style/student_dashboard.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<?php include 'header.php'; ?>
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
