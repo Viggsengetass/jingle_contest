@@ -129,6 +129,7 @@ body {
 .main-content {
     padding: 30px;
     margin-top: 20px;
+    text-align: center; /* Ajout de cette ligne pour centrer le contenu */
 }
 
 .display-4 {
