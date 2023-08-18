@@ -3,7 +3,7 @@
 <head>
     <title>Accueil</title>
     <?php include 'common.php'; ?>
-    <link rel="stylesheet" href="/style/test.css">
+    <link rel="stylesheet" href="/style/index.css">
     <script src="/js/index.js"></script>
 </head>
 <body>
