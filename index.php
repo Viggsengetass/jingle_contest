@@ -25,10 +25,6 @@
         <span data-text="S">S</span>
         <span data-text="T">T</span>
     </p>
-</div>
-<div class="description">
-    <h2>Bienvenue sur Ma Plateforme</h2>
-    <p>Découvrez et évaluez les jingles soumis par les élèves dans notre concours de création musicale !</p>
     <a href="ranking.php" class="btn btn-primary btn-lg">Voir le classement</a>
 </div>
 </body>
