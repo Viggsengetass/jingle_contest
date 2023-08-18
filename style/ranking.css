@@ -12,19 +12,24 @@ body {
 /* Styles pour le contenu principal */
 .container {
     padding: 30px;
-    margin-top: 20px;
+    margin-top: 50px;
     text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
 }
 
 h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 36px;
+    margin-bottom: 30px;
 }
 
 .table {
-    margin-top: 20px;
-    background-color: #343a40; /* Couleur de fond de la table */
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
     color: #fff; /* Couleur de texte blanche pour les en-têtes */
+    border: none;
+    border-radius: 10px;
 }
 
 .table th, .table td {
@@ -39,8 +44,8 @@ h1 {
 
 /* Style du lien de retour */
 .return-link {
-    display: block;
-    margin-top: 20px;
+    display: inline-block;
+    margin-top: 30px;
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s;
@@ -48,4 +53,10 @@ h1 {
 
 .return-link:hover {
     color: #0056b3;
+}
+
+/* Animation de survol sur les lignes du tableau */
+.table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent au survol */
+    transition: background-color 0.3s;
 }
