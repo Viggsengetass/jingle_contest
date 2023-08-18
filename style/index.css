@@ -1,11 +1,11 @@
-p {
+#anim {
     color: #fff;
     font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
     font-size: 1em;
     font-weight: 700;
 }
 
-p span {
+#anim span {
     display: inline-block;
     position: relative;
     transform-style: preserve-3d;
@@ -13,8 +13,8 @@ p span {
     -webkit-font-smoothing: antialiased;
 }
 
-p span::before,
-p span::after {
+#anim span::before,
+#anim span::after {
     display: none;
     position: absolute;
     top: 0;
@@ -24,55 +24,55 @@ p span::after {
     content: attr(data-text);
 }
 
-p span::before {
+#anim span::before {
     z-index: 1;
     color: rgba(0,0,0,0.2);
     transform: scale(1.1, 1) skew(0deg, 20deg);
 }
 
-p span::after {
+#anim span::after {
     z-index: 2;
     color: #6e5e60;
     text-shadow: -1px 0 1px #6e5e60, 1px 0 1px rgba(0,0,0,0.8);
     transform: rotateY(-40deg);
 }
 
-p span:hover::before {
+#anim span:hover::before {
     transform: scale(1.1, 1) skew(0deg, 5deg);
 }
 
-p span:hover::after {
+#anim span:hover::after {
     transform: rotateY(-10deg);
 }
 
-p span + span {
+#anim span + span {
     margin-left: 0.05em;
 }
 
 @media (min-width: 20em) {
-    p {
+    #anim {
         font-size: 2em;
     }
-    p span::before,
-    p span::after {
+    #anim span::before,
+    #anim span::after {
         display: block;
     }
 }
 
 @media (min-width: 30em) {
-    p {
+    #anim {
         font-size: 3em;
     }
 }
 
 @media (min-width: 40em) {
-    p {
+    #anim {
         font-size: 5em;
     }
 }
 
 @media (min-width: 60em) {
-    p {
+    #anim {
         font-size: 8em;
     }
 }

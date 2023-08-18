@@ -9,7 +9,7 @@
 <?php include 'header.php'; ?>
 
 <div id="global">
-    <p aria-label="CodePen">
+    <p id="anim" aria-label="CodePen">
         <span data-text="J">J</span>
         <span data-text="I">I</span>
         <span data-text="N">N</span>
