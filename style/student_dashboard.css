@@ -18,75 +18,120 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Form Styles */
-form {
+/* Jingles Section */
+.jingles-section {
+    margin-bottom: 30px;
+}
+
+.jingle-item {
     background: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
+.jingle-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.jingle-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Submit Jingle Section */
+.submit-jingle-section {
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
 form label {
     font-weight: bold;
+    color: #333;
 }
 
-form input[type="text"],
-form input[type="file"] {
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
     width: 100%;
     padding: 10px;
-    margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
 
-form input[type="submit"] {
-    background-color: #949496;
+.form-control-file {
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form-control:focus {
+    border-color: #1DB954;
+}
+
+.submit-button {
+    background-color: #1DB954;
     color: #fff;
     padding: 10px 15px;
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
-/* List Styles */
-h2 {
-    color: #333;
-    margin-top: 30px;
+.submit-button:hover {
+    background-color: #14843b;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+/* Ratings Section */
+.ratings-section {
+    margin-bottom: 30px;
 }
 
-ul li {
+.rating {
+    color: #1DB954;
     margin-bottom: 10px;
 }
 
-/* Audio Player Styles */
-audio {
-    width: 100%;
+/* Comments Section */
+.comments-section {
+    margin-bottom: 30px;
 }
 
-/* Link Styles */
-/*a {*/
-/*    color: #1DB954;*/
-/*    text-decoration: none;*/
-/*    margin-right: 10px;*/
-/*}*/
+.comment-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
 
-/* Button Styles */
-/*.btn {*/
-/*    background-color: #1DB954;*/
-/*    color: #fff;*/
-/*    padding: 10px 15px;*/
-/*    border: none;*/
-/*    border-radius: 3px;*/
-/*    cursor: pointer;*/
-/*}*/
+.comment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-/* Notification Styles */
-#notifications {
+.comment-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.comment-content {
+    color: #666;
+}
+
+/* Notifications Section */
+.notifications-section {
     margin-top: 30px;
 }
 
@@ -101,9 +146,8 @@ audio {
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
-    form input[type="text"],
-    form input[type="file"],
-    form input[type="submit"] {
-        width: 100%;
+    .jingle-item,
+    .comment-item {
+        padding: 15px;
     }
 }
