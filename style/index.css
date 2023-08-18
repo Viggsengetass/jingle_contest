@@ -94,11 +94,10 @@ body {
 .word {
     display: flex;
     justify-content: center;
-    align-content: center;
     color: #6e5e60;
     padding-top: 100px;
     font: 700 normal 4em/1.5 Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
-    text-shadow: 1px 2px white, 2px 4px white, 3px 6px white, 4px 8px #6e5e60, 5px 10px #6e5e60, 6px 12px #6e5e60, 7px 14px #6e5e60, 8px 16px #6e5e60, 9px 18px black, 10px 20px #6e5e60;
+    text-shadow: 1px 2px white, 2px 4px white, 3px 6px white, 4px 8px white, 5px 10px white, 6px 12px white, 7px 14px white, 8px 16px white, 9px 18px black, 10px 20px white;
 }
 
 #btn-rank{
