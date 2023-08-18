@@ -4,6 +4,7 @@
     <title>Accueil</title>
     <?php include 'common.php'; ?>
     <link rel="stylesheet" href="/style/test.css">
+    <script src="/js/index.js"></script>
 </head>
 <body>
 <?php include 'header.php'; ?>
@@ -25,6 +26,7 @@
         <span data-text="S">S</span>
         <span data-text="T">T</span>
     </p>
+    <div class="word"></div>
     <a href="ranking.php" class="btn btn-primary btn-lg">Voir le classement</a>
 </div>
 </body>
