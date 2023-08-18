@@ -58,6 +58,7 @@ if (isset($_GET['delete_jingle_id'])) {
     <title>Tableau de bord élève</title>
     <?php include 'common.php'; ?>
     <link rel="stylesheet" href="/style/student_dashboard.css">
+    <script src="/js/student_dashboard.js"></script>
 </head>
 <body>
 <?php include 'header.php'; ?>
