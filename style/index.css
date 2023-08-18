@@ -108,8 +108,10 @@ body {
 
 .btn-primary{
     background-color: #949496;
+    border-color: #6e6e70;
 }
 
 .btn-primary:hover{
     background-color: #6e6e70;
+    border-color: #949496;
 }
