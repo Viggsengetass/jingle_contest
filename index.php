@@ -27,7 +27,9 @@
         <span data-text="T">T</span>
     </p>
     <div class="word"></div>
+    <div id="btn-rank"></div>
     <a href="ranking.php" class="btn btn-primary btn-lg">Voir le classement</a>
+    </div>
 </div>
 </body>
 </html>
