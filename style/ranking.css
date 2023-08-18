@@ -1,13 +1,13 @@
+/* ranking.css */
+
 /* Styles généraux */
 body {
     font-family: Arial, sans-serif;
-background-image: url("/assets/img/milky-way-8149815.jpg");
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
+    color: #fff; /* Couleur de texte blanche */
 }
-
-/* Styles pour l'en-tête (header) */
-/* Copiez ici les styles que vous avez définis pour le header */
 
 /* Styles pour le contenu principal */
 .container {
@@ -23,14 +23,12 @@ h1 {
 
 .table {
     margin-top: 20px;
+    background-color: #343a40; /* Couleur de fond de la table */
+    color: #fff; /* Couleur de texte blanche pour les en-têtes */
 }
 
-.table th {
-    background-color: #343a40;
-    color: white;
-}
-
-.table td, .table th {
+.table th, .table td {
+    border: none;
     vertical-align: middle;
 }
 
@@ -44,4 +42,10 @@ h1 {
     display: block;
     margin-top: 20px;
     color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.return-link:hover {
+    color: #0056b3;
 }
