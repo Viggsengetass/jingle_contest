@@ -83,7 +83,7 @@ if (isset($_GET['delete_jingle_id'])) {
                     echo "</audio>";
 
                     // Ajouter un lien pour supprimer le jingle
-                    echo "<a href='student_dashboard.php?delete_jingle_id={$row['jingle_id']}' class='btn btn-primary'>Supprimer ce jingle</a>";
+                    echo "<a href='student_dashboard.php?delete_jingle_id={$row['jingle_id']}' class='btn btn-danger'>Supprimer ce jingle</a>";
                 }
             } else {
                 echo "<p>Aucun jingle soumis pour le moment.</p>";
