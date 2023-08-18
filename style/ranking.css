@@ -56,7 +56,32 @@ h1 {
 }
 
 /* Animation de survol sur les lignes du tableau */
+.table tbody tr {
+    transition: background-color 0.3s;
+}
+
 .table tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent au survol */
     transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+/* Effet de transition sur les éléments audio */
+.audio-player audio {
+    transition: transform 0.2s;
+}
+
+.audio-player:hover audio {
+    transform: scale(1.05);
+}
+
+/* Effet d'animation sur les en-têtes de colonne */
+.table th {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.table th:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fond semi-transparent au survol */
+    color: #ffc107; /* Couleur de texte jaune au survol */
+    transition: background-color 0.3s, color 0.3s;
 }
