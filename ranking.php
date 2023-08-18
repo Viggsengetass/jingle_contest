@@ -1,9 +1,10 @@
 <?php
 require_once('config.php');
 
-$query = "SELECT j.*, AVG(r.score) AS average_score 
+$query = "SELECT u.username, j.*, AVG(r.score) AS average_score 
           FROM jingles j 
           LEFT JOIN ratings r ON j.jingle_id = r.jingle_id
+          INNER JOIN users u ON j.user_id = u.user_id
           GROUP BY j.jingle_id
           ORDER BY average_score DESC";
 $result = mysqli_query($conn, $query);
@@ -22,16 +23,21 @@ $result = mysqli_query($conn, $query);
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>Numéro</th>
             <th>Titre du jingle</th>
+            <th>Posté par</th>
             <th>Moyenne de notation</th>
             <th>Lien pour écouter</th>
         </tr>
         </thead>
         <tbody>
         <?php
+        $rank = 1;
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
+            echo "<td>{$rank}</td>"; // Numéro dans le classement
             echo "<td>{$row['jingle_title']}</td>";
+            echo "<td>{$row['username']}</td>"; // Nom de l'utilisateur
             $average_score = isset($row['average_score']) ? round($row['average_score'], 2) : "Aucune note";
             echo "<td>{$average_score}</td>";
             echo "<td><audio controls>";
@@ -39,6 +45,7 @@ $result = mysqli_query($conn, $query);
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio></td>";
             echo "</tr>";
+            $rank++;
         }
         ?>
         </tbody>
