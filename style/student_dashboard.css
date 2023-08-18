@@ -18,120 +18,75 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Jingles Section */
-.jingles-section {
-    margin-bottom: 30px;
-}
-
-.jingle-item {
+/* Form Styles */
+form {
     background: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.jingle-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.jingle-title {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-/* Submit Jingle Section */
-.submit-jingle-section {
-    margin-bottom: 30px;
-}
-
-/* Form Styles */
 form label {
     font-weight: bold;
-    color: #333;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-control {
+form input[type="text"],
+form input[type="file"] {
     width: 100%;
     padding: 10px;
+    margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
 
-.form-control-file {
-    display: block;
-    width: 100%;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-.form-control:focus {
-    border-color: #1DB954;
-}
-
-.submit-button {
-    background-color: #1DB954;
+form input[type="submit"] {
+    background-color: #949496;
     color: #fff;
     padding: 10px 15px;
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
 }
 
-.submit-button:hover {
-    background-color: #14843b;
-}
-
-/* Ratings Section */
-.ratings-section {
-    margin-bottom: 30px;
-}
-
-.rating {
-    color: #1DB954;
-    margin-bottom: 10px;
-}
-
-/* Comments Section */
-.comments-section {
-    margin-bottom: 30px;
-}
-
-.comment-item {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.comment-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.comment-title {
-    font-weight: bold;
+/* List Styles */
+h2 {
     color: #333;
+    margin-top: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
     margin-bottom: 10px;
 }
 
-.comment-content {
-    color: #666;
+/* Audio Player Styles */
+audio {
+    width: 100%;
 }
 
-/* Notifications Section */
-.notifications-section {
+/* Link Styles */
+/*a {*/
+/*    color: #1DB954;*/
+/*    text-decoration: none;*/
+/*    margin-right: 10px;*/
+/*}*/
+
+/* Button Styles */
+/*.btn {*/
+/*    background-color: #1DB954;*/
+/*    color: #fff;*/
+/*    padding: 10px 15px;*/
+/*    border: none;*/
+/*    border-radius: 3px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/* Notification Styles */
+#notifications {
     margin-top: 30px;
 }
 
@@ -146,8 +101,9 @@ form label {
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
-    .jingle-item,
-    .comment-item {
-        padding: 15px;
+    form input[type="text"],
+    form input[type="file"],
+    form input[type="submit"] {
+        width: 100%;
     }
 }
