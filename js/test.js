@@ -1,4 +1,4 @@
-var words = ["Prenez part au concours !", " Déposez vos jingles", "Découvrez votre classement","Donnez tout pour remporter la victoir !"],
+var words = ["Prenez part au concours !", " Déposez vos jingles", "Découvrez votre classement","Donnez tout pour remporter la victoire !"],
     part,
     i = 0,
     offset = 0,
