@@ -26,14 +26,14 @@ p span::after {
 
 p span::before {
     z-index: 1;
-    color: rgba(0, 0, 0, 0.2);
+    color: rgba(0,0,0,0.2);
     transform: scale(1.1, 1) skew(0deg, 20deg);
 }
 
 p span::after {
     z-index: 2;
     color: #6e5e60;
-    text-shadow: -1px 0 1px #6e5e60, 1px 0 1px rgba(0, 0, 0, 0.8);
+    text-shadow: -1px 0 1px #6e5e60, 1px 0 1px rgba(0,0,0,0.8);
     transform: rotateY(-40deg);
 }
 
@@ -77,25 +77,17 @@ p span + span {
     }
 }
 
-/* Ajout des styles pour la description */
-#global {
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-}
-
-.description {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.description h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.description p {
-    font-size: 18px;
-    margin-bottom: 20px;
+    background-color: #6e5e60;
 }
