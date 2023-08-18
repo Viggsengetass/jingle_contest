@@ -1,4 +1,4 @@
-var words = ["hey I like SASS", "I used to like LESS", "I also heart Jade"],
+var words = ["Prenez part au concours !", " Déposez vos jingles", "Découvrez votre classement","Donnez tout pour remporter la victoir !"],
     part,
     i = 0,
     offset = 0,
