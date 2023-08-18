@@ -50,7 +50,7 @@ $result = mysqli_query($conn, $query);
         ?>
         </tbody>
     </table>
-    <a href="index.php">Retour à la page d'accueil</a>
+    <a class="btn btn-primary" href="index.php">Retour à la page d'accueil</a>
 </div>
 </body>
 </html>
