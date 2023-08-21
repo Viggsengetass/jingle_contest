@@ -16,10 +16,10 @@ $result = mysqli_query($conn, $query);
     <title>Classement public des jingles par notation</title>
     <?php include 'common.php'; ?>
     <link rel="stylesheet" href="/style/ranking.css">
+    <?php include 'header.php'; ?>
+
 </head>
 <body>
-<?php include 'header.php'; ?>
-
 <div class="container mt-5">
     <h1>Classement public des jingles par notation</h1>
     <table class="table table-bordered">
