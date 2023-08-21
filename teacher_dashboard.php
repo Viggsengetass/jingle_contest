@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn btn-primary">Créer le compte élève</button>
     </form>
 
-    <a href='logout.php' class="mt-4">Se déconnecter</a>
+    <a href='logout.php' class="btn btn-primary">Se déconnecter</a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
