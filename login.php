@@ -53,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="/style/login.css">
 </head>
 <body>
+<?php include 'header.php'; ?>
+
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="login-container">
         <h1 class="text-center">Connexion</h1>
@@ -72,6 +74,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="text-center mt-3">Pas encore de compte ? <a href="register.php">Créer un compte</a></p>
     </div>
 </div>
-<a class="btn btn-primary" href="index.php">Retour à la page d'accueil</a>
+<!--<a class="btn btn-primary" href="index.php">Retour à la page d'accueil</a>-->
 </body>
 </html>
