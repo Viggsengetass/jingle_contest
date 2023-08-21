@@ -1,3 +1,4 @@
+<link rel="icon" href="/assets/img/music-band.png" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="/style/header.css">
 <link rel="stylesheet" href="/style/common.css">
