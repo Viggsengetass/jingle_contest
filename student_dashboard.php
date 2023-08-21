@@ -176,8 +176,9 @@ if (isset($_GET['delete_jingle_id'])) {
 </script>
 
 <!-- Lien pour se déconnecter -->
+<div id="wrap-btn">
 <a href='logout.php' class="btn btn-secondary mt-3">Se déconnecter</a>
-
+</div>
 <?php
 if (isset($error_message)) {
     echo "<p class='text-danger mt-3'>{$error_message}</p>";

@@ -99,6 +99,13 @@ audio {
     color: #ff0000;
 }
 
+#wrap-btn{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
     form input[type="text"],
