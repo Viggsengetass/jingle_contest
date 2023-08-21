@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <p class="text-center mt-3">Pas encore de compte ? <a href="register.php">Créer un compte</a></p>
     </div>
-    <a class="btn btn-primary" href="index.php">Retour à la page d'accueil</a>
 </div>
+<a class="btn btn-primary" href="index.php">Retour à la page d'accueil</a>
 </body>
 </html>
