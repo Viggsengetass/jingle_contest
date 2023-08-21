@@ -1,6 +1,6 @@
 /* Styles pour le header */
 .navbar {
-    background-color: #343a40;
+    background-color: background-color: rgba(0, 0, 0, 0.6); !important;
     margin-bottom: 20px;
     width: 100%;
     position: fixed ;
