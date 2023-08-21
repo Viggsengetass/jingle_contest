@@ -1,9 +1,12 @@
 .btn-primary{
     background-color: #949496;
     border-color: #6e6e70;
+    transition: background-color 0.2s ease-in-out;
+    cursor: crosshair;
 }
 
 .btn-primary:hover{
     background-color: #6e6e70;
     border-color: #949496;
+    filter: brightness(1.1);
 }
