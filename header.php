@@ -16,6 +16,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="ranking.php">Classement</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Se déconnecter</a>
+                </li>
             </ul>
         </div>
     </div>
