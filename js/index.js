@@ -5,7 +5,7 @@ var words = ["Prenez part au concours !", " Déposez vos jingles", "Découvrez v
     len = words.length,
     forwards = true,
     skip_count = 0,
-    skip_delay = 5,
+    skip_delay = 0,
     speed = 100;
 
 var wordflick = function () {
