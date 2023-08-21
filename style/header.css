@@ -58,3 +58,8 @@
 .navbar-toggler-icon{
     background-image: url("/assets/img/remarques.png");
 }
+
+#ico{
+    height: 20px;
+    width: 20px;
+}
