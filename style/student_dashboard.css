@@ -104,6 +104,7 @@ audio {
     height: 5%;
     display: flex;
     justify-content: center;
+    padding-bottom: 5%;
 }
 
 /* Responsive Styles */
