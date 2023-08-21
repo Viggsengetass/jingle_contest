@@ -242,3 +242,11 @@ header {
 .logout-link:hover {
     color: #0D7B3D;
 }
+
+#wrap-btn{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5%;
+}
