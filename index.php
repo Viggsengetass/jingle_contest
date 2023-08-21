@@ -26,7 +26,9 @@
         <span data-text="S">S</span>
         <span data-text="T">T</span>
     </p>
+    <div id="word-wraper">
     <div class="word"></div>
+    </div>
     <div id="btn-rank">
     <a href="ranking.php" class="btn btn-primary btn-lg">Voir le classement</a>
     </div>
