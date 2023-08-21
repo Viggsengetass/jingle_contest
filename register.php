@@ -38,10 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Inscription</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <?php include 'common.php'; ?>
     <link rel="stylesheet" href="/style/register.css">
 </head>
 <body>
+<?php include 'header.php'; ?>
+
 <div class="register-container">
     <h1 class="text-center">Inscription</h1>
     <form method="post" action="register.php">
