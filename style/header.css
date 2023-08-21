@@ -54,7 +54,3 @@
 .navbar-nav .nav-item.active .nav-link {
     color: #007bff;
 }
-
-.navbar-toggler-icon{
-    background-image: url("/assets/img/remarques.png");
-}
