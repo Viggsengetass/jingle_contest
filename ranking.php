@@ -44,7 +44,6 @@ $result = mysqli_query($conn, $query);
             echo "<source src='{$row['jingle_file_path']}' type='audio/mpeg'>";
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio>";
-            echo "<div class='custom-audio-player'>";
             echo "<button class='play-pause-button' data-playing='false'></button>";
             echo "<div class='timeline-container'>";
             echo "<div class='timeline'>";
@@ -53,7 +52,8 @@ $result = mysqli_query($conn, $query);
             echo "<div class='timer'>00:00</div>";
             echo "</div>";
             echo "<button class='speed-button'>1x</button>";
-            echo "</div>";
+            echo "<button class='loop-button'>Boucle</button>"; // Bouton de bouclage
+            echo "<a class='download-button' id='download-button' download='{$row['jingle_title']}.mp3'>Télécharger</a>"; // Bouton de téléchargement
             echo '</td>';
             echo "</tr>";
             $rank++;
@@ -62,6 +62,9 @@ $result = mysqli_query($conn, $query);
         </tbody>
     </table>
     <a class="btn btn-primary" href="index.php">Retour à la page d'accueil</a>
+    <div class="visualizer-container">
+        <canvas id="audio-visualizer"></canvas> <!-- Zone du visualiseur audio -->
+    </div>
 </div>
 <script src="/js/ranking.js"></script>
 </body>
