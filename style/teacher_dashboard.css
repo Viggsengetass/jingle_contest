@@ -65,22 +65,6 @@ header {
     margin-bottom: 15px;
 }
 
-/*.btn-primary {*/
-/*    background-color: #1DB954;*/
-/*    border: none;*/
-/*    padding: 10px 20px;*/
-/*    border-radius: 5px;*/
-/*    color: #fff;*/
-/*    font-size: 16px;*/
-/*    cursor: pointer;*/
-/*    transition: background-color 0.2s ease-in-out;*/
-/*}*/
-
-/*.btn-primary:hover {*/
-/*    background-color: #0D7B3D;*/
-/*    filter: brightness(1.1);*/
-/*}*/
-
 /* Comment Section Styles */
 .comment-section {
     margin-top: 40px;
