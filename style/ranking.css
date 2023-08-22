@@ -4,7 +4,7 @@ body {
     background-image: url("/assets/img/milky-way-2695569_1920.jpg");
     margin: 0;
     padding-top: 10%;
-    color: #fff;
+    color: #fff; /* Couleur de texte blanche */
 }
 
 /* Styles pour le contenu principal */
@@ -14,7 +14,7 @@ body {
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
 }
 
 h1 {
@@ -24,8 +24,8 @@ h1 {
 
 .table {
     margin-top: 30px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
+    color: #fff; /* Couleur de texte blanche pour les en-têtes */
     border: none;
     border-radius: 10px;
 }
@@ -35,16 +35,22 @@ h1 {
     vertical-align: middle;
 }
 
+/* Styles pour le lecteur audio personnalisé */
 .audio-player {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 .custom-audio-player {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
 }
 
 .play-pause-button {
@@ -52,33 +58,44 @@ h1 {
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 20px;
-    color: #fff;
+    font-size: 24px;
+    color: #ffc107; /* Couleur du bouton de lecture/pause */
+    transition: color 0.3s;
+    animation: pulse 1s infinite alternate; /* Animation de pulsation */
+}
+
+.play-pause-button:hover {
+    color: #ff5733; /* Couleur du bouton de lecture/pause au survol */
 }
 
 .timeline-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    margin: 10px 0;
 }
 
 .timeline {
-    flex-grow: 1;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    height: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    margin-right: 10px;
     position: relative;
+    overflow: hidden;
 }
 
 .progress-bar {
-    height: 100%;
     width: 0;
-    background-color: #007bff;
+    height: 100%;
+    background-color: #ffc107; /* Couleur de la barre de progression */
+    border-radius: 5px;
     position: absolute;
+    transition: width 0.1s;
 }
 
 .timer {
-    font-size: 14px;
     color: #fff;
+    font-size: 14px;
 }
 
 .speed-button {
@@ -87,56 +104,20 @@ h1 {
     outline: none;
     cursor: pointer;
     font-size: 14px;
-    color: #007bff;
+    color: #007bff; /* Couleur du bouton de vitesse */
     transition: color 0.3s;
 }
 
 .speed-button:hover {
-    color: #0056b3;
+    color: #0056b3; /* Couleur du bouton de vitesse au survol */
 }
 
-/* Style de l'égaliseur visuel */
-.visualizer {
-    width: 100%;
-    height: 4px;
-    background-color: #007bff;
-    margin-top: 10px;
-}
-
-/* Style de la forme d'onde */
-.waveform {
-    width: 100%;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin-top: 10px;
-}
-
-/* Style du bouton de boucle */
-.loop-button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: #007bff;
-    transition: color 0.3s;
-}
-
-.loop-button:hover {
-    color: #0056b3;
-}
-
-/* Style du bouton de téléchargement */
-.download-link {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.download-link:hover {
-    background-color: #0056b3;
+/* Animation de pulsation pour le bouton de lecture/pause */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
 }
