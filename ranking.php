@@ -1,13 +1,5 @@
 <?php
 require_once('config.php');
-
-$query = "SELECT u.username, j.*, AVG(r.score) AS average_score 
-          FROM jingles j 
-          LEFT JOIN ratings r ON j.jingle_id = r.jingle_id
-          INNER JOIN users u ON j.user_id = u.user_id
-          GROUP BY j.jingle_id
-          ORDER BY average_score DESC";
-$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
