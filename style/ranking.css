@@ -6,6 +6,7 @@ body {
     padding-top: 10%;
     color: #fff; /* Couleur de texte blanche */
 }
+
 /* Styles pour le contenu principal */
 .container {
     padding: 30px;
@@ -15,10 +16,12 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
 }
+
 h1 {
     font-size: 36px;
     margin-bottom: 30px;
 }
+
 .table {
     margin-top: 30px;
     background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
@@ -26,10 +29,12 @@ h1 {
     border: none;
     border-radius: 10px;
 }
+
 .table th, .table td {
     border: none;
     vertical-align: middle;
 }
+
 /* Styles pour le lecteur audio personnalisé */
 .audio-player {
     display: flex;
@@ -41,11 +46,13 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
+
 .custom-audio-player {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .play-pause-button {
     background-color: transparent;
     border: none;
@@ -56,14 +63,17 @@ h1 {
     transition: color 0.3s;
     animation: pulse 1s infinite alternate; /* Animation de pulsation */
 }
+
 .play-pause-button:hover {
     color: #ff5733; /* Couleur du bouton de lecture/pause au survol */
 }
+
 .timeline-container {
     display: flex;
     align-items: center;
     margin: 10px 0;
 }
+
 .timeline {
     width: 100%;
     height: 10px;
@@ -73,17 +83,18 @@ h1 {
     position: relative;
     overflow: hidden;
 }
+
 .progress-bar {
-    width: 0;
-    height: 100%;
     background-color: #ffc107; /* Couleur de la barre de progression */
     border-radius: 5px;
     position: absolute;
     transition: width 0.1s;
 }
+
 .timer {
     color: #0056b3; /* Couleur du bouton de vitesse au survol */
 }
+
 /* Animation de pulsation pour le bouton de lecture/pause */
 @keyframes pulse {
     0% {
@@ -92,3 +103,4 @@ h1 {
     100% {
         transform: scale(1.1);
     }
+}
