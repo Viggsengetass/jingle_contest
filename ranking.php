@@ -1,13 +1,5 @@
 <?php
 require_once('config.php');
-
-$query = "SELECT u.username, j.*, AVG(r.score) AS average_score 
-          FROM jingles j 
-          LEFT JOIN ratings r ON j.jingle_id = r.jingle_id
-          INNER JOIN users u ON j.user_id = u.user_id
-          GROUP BY j.jingle_id
-          ORDER BY average_score DESC";
-$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -48,13 +40,6 @@ $result = mysqli_query($conn, $query);
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio>";
             echo "<button class='play-pause-button' data-playing='false'>▶</button>"; // Bouton de lecture/pause personnalisé
-            echo "<div class='progress-bar-container'>";
-            echo "<div class='progress-bar'>";
-            echo "<div class='progress-bar-fill'></div>";
-            echo "</div>";
-            echo "<div class='timer'>00:00</div>";
-            echo "</div>";
-            echo "<button class='speed-button'>1x</button>"; // Bouton de vitesse
             echo '</td>';
             echo "</tr>";
             $rank++;
