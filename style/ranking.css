@@ -38,45 +38,62 @@ h1 {
 /* Styles pour le lecteur audio personnalisé */
 .audio-player {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Modifier la disposition en colonne */
     align-items: center;
     justify-content: center;
-    margin: 20px 0;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
-
-&:hover {
-     transform: scale(1.02);
-     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
- }
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    position: relative; /* Ajouter une position relative pour les boutons */
 }
 
-.play-pause-button,
-.loop-button,
-.download-button,
-.speed-button {
+.play-pause-button {
     background-color: transparent;
     border: none;
     outline: none;
     cursor: pointer;
     font-size: 24px;
     color: #ffc107; /* Couleur du bouton de lecture/pause */
-    margin: 5px 0;
-    transition: color 0.3s, transform 0.2s;
-    transform-origin: center;
+    transition: color 0.3s;
+    margin-bottom: 10px; /* Espacement entre le bouton de lecture/pause et le bouton de bouclage */
+    animation: pulse 1s infinite alternate; /* Rétablir l'animation de pulsation */
+}
 
-&:hover {
-     color: #ff5733; /* Couleur au survol */
-     transform: scale(1.1);
- }
+.loop-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    transition: color 0.5s;
+    margin-bottom: 10px; /* Espacement entre le bouton de bouclage et le bouton de téléchargement */
 }
 
 .loop-button.active {
     color: #ffc107; /* Couleur du bouton de bouclage actif */
+}
+
+.download-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    transition: color 0.5s;
+}
+
+.speed-button {
+    background-color: transparent;
+    border-radius: 10%;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    transition: color 0.5s;
 }
 
 .speed-button:hover {
@@ -85,21 +102,14 @@ h1 {
 
 /* Styles pour le visualiseur audio */
 .visualizer-container {
-    margin-top: 20px;
+    margin-top: 20px; /* Espacement entre le lecteur audio et le visualiseur audio */
 }
 
 #audio-visualizer {
     width: 100%;
-    height: 60px; /* Réduire la hauteur du visualiseur audio */
-    background-color: rgba(0, 0, 0, 0.6); /* Couleur de fond semi-transparente */
-    border-radius: 5px;
-    animation: pulse 1s infinite alternate;
-    transition: transform 0.2s, box-shadow 0.2s;
-
-&:hover {
-     transform: scale(1.02);
-     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
- }
+    height: 100px; /* Hauteur du visualiseur audio */
+    background-color: #000; /* Couleur de fond */
+    border-radius: 10px;
 }
 
 /* Animation de survol sur les lignes du tableau */
