@@ -30,6 +30,10 @@ $result = mysqli_query($conn, $query);
             <th>Posté par</th>
             <th>Moyenne de notation</th>
             <th>Lien pour écouter</th>
+            <th>Égaliseur visuel</th>
+            <th>Forme d'onde</th>
+            <th>Fonction de boucle</th>
+            <th>Téléchargement</th>
         </tr>
         </thead>
         <tbody>
@@ -58,6 +62,10 @@ $result = mysqli_query($conn, $query);
             echo "<button class='speed-button'>1x</button>";
             echo "</div>";
             echo '</td>';
+            echo "<td class='visualizer'></td>";
+            echo "<td><canvas class='waveform'></canvas></td>";
+            echo "<td><button class='loop-button'>Boucle</button></td>";
+            echo "<td><a href='{$row['jingle_file_path']}' download class='download-link'>Télécharger</a></td>";
             echo "</tr>";
             $rank++;
         }
