@@ -1,3 +1,5 @@
+/* ranking.css */
+
 /* Styles généraux */
 body {
     font-family: Arial, sans-serif;
@@ -35,77 +37,9 @@ h1 {
     vertical-align: middle;
 }
 
-/* Styles pour le lecteur audio personnalisé */
 .audio-player {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.audio-player audio {
-    width: 100%;
-    height: 40px;
-    outline: none;
-    border: none;
-    background-color: #333;
-    border-radius: 20px;
-    margin-top: 10px;
-    position: relative;
-    transition: background-color 0.3s;
-}
-
-.audio-player audio::-webkit-media-controls-play-button,
-.audio-player audio::-webkit-media-controls-panel {
-    display: none !important;
-}
-
-.audio-player audio::before {
-    content: "\25B6"; /* Symbole de lecture (triangle droit) */
-    color: #fff;
-    font-size: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: color 0.3s;
-}
-
-.audio-player audio:hover {
-    background-color: #555;
-    transition: background-color 0.3s;
-}
-
-.audio-player audio:hover::before {
-    color: #ffc107; /* Couleur de lecture au survol */
-    transition: color 0.3s;
-}
-
-/* Animation de rotation pour le symbole de lecture */
-@keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-.audio-player.playing audio::before {
-    animation: spin 2s linear infinite; /* Démarre l'animation lorsque le lecteur est en lecture */
-}
-
-/* Style pour le bouton de lecture/pause personnalisé */
-.audio-player button.play-pause-button {
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 10px;
-    font-size: 20px;
-    color: #ffc107; /* Couleur du bouton de lecture/pause */
-    transition: color 0.3s;
-}
-
-.audio-player button.play-pause-button:hover {
-    color: #ff5733; /* Couleur du bouton de lecture/pause au survol */
-    transition: color 0.3s;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* Style du lien de retour */
@@ -130,4 +64,24 @@ h1 {
     background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent au survol */
     transition: background-color 0.3s;
     cursor: pointer;
+}
+
+/* Effet de transition sur les éléments audio */
+.audio-player audio {
+    transition: transform 0.2s;
+}
+
+.audio-player:hover audio {
+    transform: scale(1.05);
+}
+
+/* Effet d'animation sur les en-têtes de colonne */
+.table th {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.table th:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fond semi-transparent au survol */
+    color: #ffc107; /* Couleur de texte jaune au survol */
+    transition: background-color 0.3s, color 0.3s;
 }
