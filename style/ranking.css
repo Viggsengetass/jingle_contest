@@ -132,4 +132,31 @@ h1 {
     background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent au survol */
     transition: background-color 0.3s;
     cursor: pointer;
+}.play-pause-button {
+     background-color: transparent;
+     border: none;
+     outline: none;
+     cursor: pointer;
+     font-size: 24px;
+     color: #ffc107; /* Couleur du bouton de lecture/pause */
+     transition: color 0.3s;
+     animation: pulse 1s infinite alternate; /* Animation de pulsation */
+ }
+.play-pause-button:hover {
+    background-color: #ffc107; /* Couleur de la barre de progression */
+    border-radius: 5px;
+    position: absolute;
+    transition: width 0.1s;
+}
+.timer {
+    color: #0056b3; /* Couleur du bouton de vitesse au survol */
+}
+/* Animation de pulsation pour le bouton de lecture/pause */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
 }
