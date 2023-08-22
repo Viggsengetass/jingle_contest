@@ -1,69 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const audioPlayers = document.querySelectorAll(".audio-player audio");
+    const audioPlayers = document.querySelectorAll(".audio-player");
 
-    audioPlayers.forEach(function (audio) {
-        const audioContainer = audio.parentElement;
-
-        const playPauseButton = audioContainer.querySelector(".play-pause-button");
-        const progressBar = audioContainer.querySelector(".progress-bar");
-        const progressBarFill = audioContainer.querySelector(".progress-bar-fill");
-        const timer = audioContainer.querySelector(".timer");
-        const speedButton = audioContainer.querySelector(".speed-button");
+    audioPlayers.forEach((player) => {
+        const audio = player.querySelector("audio");
+        const playPauseButton = player.querySelector(".play-pause-button");
+        const progressBar = player.querySelector(".audio-progress-bar");
+        const audioTimer = player.querySelector(".audio-timer");
+        const loopButton = player.querySelector(".loop-button");
 
         let isPlaying = false;
 
-        playPauseButton.addEventListener("click", function () {
+        playPauseButton.addEventListener("click", () => {
             if (isPlaying) {
                 audio.pause();
+                playPauseButton.textContent = "▶";
             } else {
                 audio.play();
+                playPauseButton.textContent = "⏸";
             }
+            isPlaying = !isPlaying;
         });
 
-        audio.addEventListener("play", function () {
-            isPlaying = true;
-            playPauseButton.textContent = "⏸";
-        });
-
-        audio.addEventListener("pause", function () {
-            isPlaying = false;
-            playPauseButton.textContent = "▶";
-        });
-
-        audio.addEventListener("timeupdate", function () {
+        audio.addEventListener("timeupdate", () => {
             const currentTime = audio.currentTime;
             const duration = audio.duration;
-            const progress = (currentTime / duration) * 100;
+            const progressBarWidth = (currentTime / duration) * 100;
+            progressBar.style.width = progressBarWidth + "%";
 
-            progressBarFill.style.width = progress + "%";
-            timer.textContent = formatTime(currentTime);
+            const minutes = Math.floor(currentTime / 60);
+            const seconds = Math.floor(currentTime % 60);
+            audioTimer.textContent = `${minutes}:${seconds}`;
         });
 
-        progressBar.addEventListener("click", function (e) {
-            const boundingBox = progressBar.getBoundingClientRect();
-            const mouseX = e.clientX - boundingBox.left;
-            const progressPercent = (mouseX / boundingBox.width) * 100;
-            const seekTime = (progressPercent / 100) * audio.duration;
-
+        progressBar.addEventListener("click", (e) => {
+            const progressBarRect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - progressBarRect.left;
+            const progressBarWidth = progressBarRect.width;
+            const seekTime = (clickX / progressBarWidth) * audio.duration;
             audio.currentTime = seekTime;
         });
 
-        let playbackSpeedIndex = 1;
-        const playbackSpeeds = [0.5, 1.0, 1.5, 2.0];
-
-        speedButton.addEventListener("click", function () {
-            playbackSpeedIndex = (playbackSpeedIndex + 1) % playbackSpeeds.length;
-            audio.playbackRate = playbackSpeeds[playbackSpeedIndex];
-            speedButton.textContent = playbackSpeeds[playbackSpeedIndex] + "x";
+        loopButton.addEventListener("click", () => {
+            audio.loop = !audio.loop;
+            if (audio.loop) {
+                loopButton.style.backgroundColor = "#0056b3";
+            } else {
+                loopButton.style.backgroundColor = "#007bff";
+            }
         });
     });
-
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        seconds = Math.floor(seconds % 60);
-
-        return (
-            (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds
-        );
-    }
 });

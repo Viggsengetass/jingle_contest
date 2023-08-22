@@ -37,66 +37,74 @@ h1 {
 
 .audio-player {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+}
+
+/* Styles du lecteur audio */
+.audio-player audio {
+    width: 100%;
+    margin-top: 10px;
 }
 
 .play-pause-button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 20px;
+    background-color: #007bff;
     color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
-.timeline-container {
+.play-pause-button:hover {
+    background-color: #0056b3;
+}
+
+.audio-progress-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    margin-top: 10px;
 }
 
-.timeline {
+.audio-progress-bar {
     flex-grow: 1;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.3);
-    position: relative;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0;
+    height: 5px;
     background-color: #007bff;
-    position: absolute;
-    transition: width 0.1s ease-in-out;
+    margin: 0 5px;
+    border-radius: 2px;
 }
 
-.timer {
-    font-size: 14px;
+.audio-timer {
     color: #fff;
-}
-
-.speed-button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
     font-size: 14px;
-    color: #007bff;
-    transition: color 0.3s;
 }
 
-.speed-button:hover {
-    color: #0056b3;
+.loop-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
 }
 
-/* Style du lien de téléchargement */
+.loop-button:hover {
+    background-color: #0056b3;
+}
+
 .download-link {
     color: #007bff;
     text-decoration: none;
     font-size: 14px;
+    margin-top: 10px;
     transition: color 0.3s;
-    margin-left: 10px;
 }
 
 .download-link:hover {
