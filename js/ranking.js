@@ -9,8 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const progressBarFill = audioContainer.querySelector(".progress-bar-fill");
         const timer = audioContainer.querySelector(".timer");
         const speedButton = audioContainer.querySelector(".speed-button");
+        const visualizer = audioContainer.querySelector(".visualizer");
+        const waveformCanvas = audioContainer.querySelector(".waveform");
+        const loopButton = audioContainer.querySelector(".loop-button");
 
         let isPlaying = false;
+        let isLooping = false;
 
         playPauseButton.addEventListener("click", function () {
             if (isPlaying) {
@@ -55,6 +59,20 @@ document.addEventListener("DOMContentLoaded", function () {
             playbackSpeedIndex = (playbackSpeedIndex + 1) % playbackSpeeds.length;
             audio.playbackRate = playbackSpeeds[playbackSpeedIndex];
             speedButton.textContent = playbackSpeeds[playbackSpeedIndex] + "x";
+        });
+
+        // Code pour l'égaliseur visuel ici
+
+        // Code pour la forme d'onde ici
+
+        loopButton.addEventListener("click", function () {
+            if (isLooping) {
+                audio.loop = false;
+                isLooping = false;
+            } else {
+                audio.loop = true;
+                isLooping = true;
+            }
         });
     });
 
