@@ -41,6 +41,7 @@ require_once('config.php');
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio>";
             echo "<button class='play-pause-button' data-playing='false'>▶</button>"; // Bouton de lecture/pause personnalisé
+<<<<<<< HEAD
             echo "<div class='timeline-container'>";
             echo "<div class='timeline'>";
             echo "<div class='progress-bar'></div>";
@@ -50,6 +51,9 @@ require_once('config.php');
             echo "<button class='speed-button'>1x</button>"; // Bouton pour changer la vitesse de lecture
             echo "<a class='download-link' href='{$row['jingle_file_path']}' download>Télécharger</a>"; // Lien de téléchargement
             echo "</td>";
+=======
+            echo '</td>';
+>>>>>>> parent of b229095 (fiix)
             echo "</tr>";
             $rank++;
         }
