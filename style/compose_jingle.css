@@ -1,0 +1,52 @@
+/* Composition de Jingle Styles */
+#jingleComposer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+button {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#startButton {
+    background-color: #1DB954;
+}
+
+#stopButton {
+    background-color: #FF0000;
+}
+
+#resetButton {
+    background-color: #FFA500;
+}
+
+#downloadButton {
+    background-color: #007bff;
+}
+
+#resetButton:hover,
+#downloadButton:hover {
+    opacity: 0.8;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
