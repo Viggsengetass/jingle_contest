@@ -27,6 +27,7 @@ require_once('config.php');
         <tbody>
         <?php
         $rank = 1;
+        // Boucle pour afficher les jingles et le lecteur audio
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>{$rank}</td>"; // Numéro dans le classement
@@ -40,7 +41,15 @@ require_once('config.php');
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio>";
             echo "<button class='play-pause-button' data-playing='false'>▶</button>"; // Bouton de lecture/pause personnalisé
-            echo '</td>';
+            echo "<div class='timeline-container'>";
+            echo "<div class='timeline'>";
+            echo "<div class='progress-bar'></div>";
+            echo "</div>";
+            echo "<div class='timer'>00:00</div>";
+            echo "</div>";
+            echo "<button class='speed-button'>1x</button>"; // Bouton pour changer la vitesse de lecture
+            echo "<a class='download-link' href='{$row['jingle_file_path']}' download>Télécharger</a>"; // Lien de téléchargement
+            echo "</td>";
             echo "</tr>";
             $rank++;
         }

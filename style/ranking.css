@@ -35,120 +35,78 @@ h1 {
     vertical-align: middle;
 }
 
-/* Styles pour le lecteur audio personnalisé */
 .audio-player {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
+/* Styles du lecteur audio */
 .audio-player audio {
     width: 100%;
-    height: 30px;
-    outline: none;
-    border: none;
-    background-color: #333;
-    border-radius: 20px;
     margin-top: 10px;
-    position: relative;
 }
 
-.audio-player audio::-webkit-media-controls-play-button,
-.audio-player audio::-webkit-media-controls-panel {
-    display: none !important;
-}
-
-.audio-player audio::before {
-    content: "\25B6"; /* Symbole de lecture (triangle droit) */
+.play-pause-button {
+    background-color: #007bff;
     color: #fff;
-    font-size: 18px;
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translate(-50%, -50%);
-}
-
-.audio-player button.play-pause-button {
-    background: none;
     border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
     font-size: 18px;
-    color: #ffc107; /* Couleur du bouton de lecture/pause */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
-.audio-player button.play-pause-button:hover {
-    color: #ff5733; /* Couleur du bouton de lecture/pause au survol */
+.play-pause-button:hover {
+    background-color: #0056b3;
 }
 
-.audio-player .progress-bar-container {
-    flex: 1;
+.audio-progress-container {
     display: flex;
     align-items: center;
-    margin-left: 20px;
+    margin-top: 10px;
 }
 
-.audio-player .progress-bar {
-    width: 100%;
-    height: 6px;
-    background-color: #555;
-    border-radius: 3px;
-    position: relative;
+.audio-progress-bar {
+    flex-grow: 1;
+    height: 5px;
+    background-color: #007bff;
+    margin: 0 5px;
+    border-radius: 2px;
 }
 
-.audio-player .progress-bar-fill {
-    height: 100%;
-    background-color: #ffc107; /* Couleur de la barre de progression */
-    border-radius: 3px;
-}
-
-.audio-player .timer {
-    margin-left: 10px;
+.audio-timer {
     color: #fff;
     font-size: 14px;
 }
 
-.audio-player .speed-button {
-    background: none;
+.loop-button {
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 0;
+    border-radius: 5px;
+    padding: 5px 10px;
     font-size: 14px;
-    color: #007bff; /* Couleur du bouton de vitesse */
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
 }
 
-.audio-player .speed-button:hover {
-    color: #0056b3; /* Couleur du bouton de vitesse au survol */
+.loop-button:hover {
+    background-color: #0056b3;
 }
 
-/* Style du lien de retour */
-.return-link {
-    display: inline-block;
-    margin-top: 30px;
+.download-link {
     color: #007bff;
     text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
     transition: color 0.3s;
 }
 
-.return-link:hover {
+.download-link:hover {
     color: #0056b3;
-}
-
-/* Animation de survol sur les lignes du tableau */
-.table tbody tr {
-    transition: background-color 0.3s;
-}
-
-.table tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent au survol */
-    transition: background-color 0.3s;
-    cursor: pointer;
 }
