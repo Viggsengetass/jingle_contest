@@ -1,13 +1,5 @@
 <?php
 require_once('config.php');
-
-$query = "SELECT u.username, j.*, AVG(r.score) AS average_score 
-          FROM jingles j 
-          LEFT JOIN ratings r ON j.jingle_id = r.jingle_id
-          INNER JOIN users u ON j.user_id = u.user_id
-          GROUP BY j.jingle_id
-          ORDER BY average_score DESC";
-$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +27,7 @@ $result = mysqli_query($conn, $query);
         <tbody>
         <?php
         $rank = 1;
+        // Boucle pour afficher les jingles et le lecteur audio
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>{$rank}</td>"; // Numéro dans le classement
@@ -47,17 +40,16 @@ $result = mysqli_query($conn, $query);
             echo "<source src='{$row['jingle_file_path']}' type='audio/mpeg'>";
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio>";
-            echo "<div class='custom-audio-player'>";
-            echo "<button class='play-pause-button' data-playing='false'>▶</button>";
+            echo "<button class='play-pause-button' data-playing='false'>▶</button>"; // Bouton de lecture/pause personnalisé
             echo "<div class='timeline-container'>";
             echo "<div class='timeline'>";
             echo "<div class='progress-bar'></div>";
             echo "</div>";
             echo "<div class='timer'>00:00</div>";
             echo "</div>";
-            echo "<button class='speed-button'>1x</button>";
-            echo "</div>";
-            echo '</td>';
+            echo "<button class='speed-button'>1x</button>"; // Bouton pour changer la vitesse de lecture
+            echo "<a class='download-link' href='{$row['jingle_file_path']}' download>Télécharger</a>"; // Lien de téléchargement
+            echo "</td>";
             echo "</tr>";
             $rank++;
         }

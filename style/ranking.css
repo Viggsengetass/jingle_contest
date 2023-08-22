@@ -4,7 +4,7 @@ body {
     background-image: url("/assets/img/milky-way-2695569_1920.jpg");
     margin: 0;
     padding-top: 10%;
-    color: #fff;
+    color: #fff; /* Couleur de texte blanche */
 }
 
 /* Styles pour le contenu principal */
@@ -14,7 +14,7 @@ body {
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
 }
 
 h1 {
@@ -24,8 +24,8 @@ h1 {
 
 .table {
     margin-top: 30px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
+    color: #fff; /* Couleur de texte blanche pour les en-têtes */
     border: none;
     border-radius: 10px;
 }
@@ -39,12 +39,6 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.custom-audio-player {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .play-pause-button {
@@ -93,5 +87,18 @@ h1 {
 }
 
 .speed-button:hover {
+    color: #0056b3;
+}
+
+/* Style du lien de téléchargement */
+.download-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+    margin-left: 10px;
+}
+
+.download-link:hover {
     color: #0056b3;
 }
