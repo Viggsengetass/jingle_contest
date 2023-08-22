@@ -61,7 +61,6 @@ h1 {
     font-size: 24px;
     color: #ffc107; /* Couleur du bouton de lecture/pause */
     transition: color 0.3s;
-    animation: pulse 1s infinite alternate; /* Rétablir l'animation de pulsation */
 }
 
 .play-pause-button:hover {
