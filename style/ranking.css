@@ -98,12 +98,12 @@ h1 {
 
 .speed-button {
     background-color: transparent;
-    border: none;
+    border-radius: 10%;
     outline: none;
     cursor: pointer;
     font-size: 14px;
-    color: #007bff; /* Couleur du bouton de vitesse */
-    transition: color 0.3s;
+    color: white;
+    transition: color 0.5s;
 }
 
 .speed-button:hover {
