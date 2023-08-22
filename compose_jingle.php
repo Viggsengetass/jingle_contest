@@ -40,9 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Composition de Jingle</title>
+    <?php include 'common.php'; ?>
+    <link rel="stylesheet" href="/style/compose_jingle.css">
+    <script src="/js/compose_jingle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
 </head>
 <body>
+<?php include 'header.php'; ?>
+
 <h1>Composition de Jingle</h1>
 <button id="startButton">Démarrer la Composition</button>
 <button id="stopButton" disabled>Arrêter la Composition</button>
