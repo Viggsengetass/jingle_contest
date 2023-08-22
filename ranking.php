@@ -47,16 +47,14 @@ $result = mysqli_query($conn, $query);
             echo "<source src='{$row['jingle_file_path']}' type='audio/mpeg'>";
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio>";
-            echo "<div class='custom-audio-player'>";
-            echo "<button class='play-pause-button' data-playing='false'></button>";
-            echo "<div class='timeline-container'>";
-            echo "<div class='timeline'>";
-            echo "<div class='progress-bar'></div>";
+            echo "<button class='play-pause-button' data-playing='false'>▶</button>"; // Bouton de lecture/pause personnalisé
+            echo "<div class='progress-bar-container'>";
+            echo "<div class='progress-bar'>";
+            echo "<div class='progress-bar-fill'></div>";
             echo "</div>";
             echo "<div class='timer'>00:00</div>";
             echo "</div>";
-            echo "<button class='speed-button'>1x</button>";
-            echo "</div>";
+            echo "<button class='speed-button'>1x</button>"; // Bouton de vitesse
             echo '</td>';
             echo "</tr>";
             $rank++;
