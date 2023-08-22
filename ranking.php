@@ -45,15 +45,15 @@ $result = mysqli_query($conn, $query);
             echo "Votre navigateur ne prend pas en charge l'élément audio.";
             echo "</audio>";
             echo "<button class='play-pause-button' data-playing='false'></button>";
+            echo "<button class='loop-button'>Boucle</button>"; // Bouton de bouclage
+            echo "<a class='download-button' id='download-button' download='{$row['jingle_title']}.mp3'>Télécharger</a>"; // Bouton de téléchargement
             echo "<div class='timeline-container'>";
             echo "<div class='timeline'>";
             echo "<div class='progress-bar'></div>";
             echo "</div>";
             echo "</div>";
             echo "<button class='speed-button'>1x</button>";
-            echo "<button class='loop-button'>Boucle</button>"; // Bouton de bouclage
-            echo "<a class='download-button' id='download-button' download='{$row['jingle_title']}.mp3'>Télécharger</a>"; // Bouton de téléchargement
-            echo '</td>';
+            echo "</td>";
             echo "</tr>";
             $rank++;
         }

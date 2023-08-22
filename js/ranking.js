@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
     audioPlayers.forEach(function(audio) {
         const audioContainer = audio.parentElement;
         const playPauseButton = audioContainer.querySelector('.play-pause-button');
+        const loopButton = audioContainer.querySelector('.loop-button'); // Bouton de bouclage
+        const downloadButton = audioContainer.querySelector('.download-button'); // Bouton de téléchargement
+        const speedButton = audioContainer.querySelector('.speed-button');
         const progressBar = audioContainer.querySelector('.progress-bar');
         const progressBarFill = audioContainer.querySelector('.progress-bar-fill');
         const timer = audioContainer.querySelector('.timer');
-        const speedButton = audioContainer.querySelector('.speed-button');
-        const loopButton = audioContainer.querySelector('.loop-button'); // Bouton de bouclage
-        const downloadButton = audioContainer.querySelector('.download-button'); // Bouton de téléchargement
 
         let isPlaying = false;
         let isLooping = false;
@@ -33,14 +33,34 @@ document.addEventListener("DOMContentLoaded", function() {
             loopButton.classList.toggle('active', isLooping);
         });
 
+        downloadButton.addEventListener('click', function() {
+            // Obtenir le lien de téléchargement depuis la source audio
+            const audioSource = audio.querySelector('source');
+            const audioSrc = audioSource.getAttribute('src');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = audioSrc;
+            downloadLink.download = audioSrc.split('/').pop();
+            downloadLink.click();
+        });
+
+        speedButton.addEventListener('click', function() {
+            const speeds = [0.5, 1.0, 1.5, 2.0];
+            const currentIndex = speeds.indexOf(audio.playbackRate);
+            const newIndex = (currentIndex + 1) % speeds.length;
+            audio.playbackRate = speeds[newIndex];
+            speedButton.textContent = speeds[newIndex] + 'x';
+        });
+
         audio.addEventListener('play', function() {
             isPlaying = true;
             playPauseButton.textContent = '⏸';
+            playPauseButton.classList.add('pulse'); // Ajout de l'animation pulse
         });
 
         audio.addEventListener('pause', function() {
             isPlaying = false;
             playPauseButton.textContent = '▶';
+            playPauseButton.classList.remove('pulse'); // Suppression de l'animation pulse
         });
 
         audio.addEventListener('timeupdate', function() {
@@ -57,24 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const progressPercent = (mouseX / boundingBox.width) * 100;
             const seekTime = (progressPercent / 100) * audio.duration;
             audio.currentTime = seekTime;
-        });
-
-        let playbackSpeedIndex = 1;
-        const playbackSpeeds = [0.5, 1.0, 1.5, 2.0];
-        speedButton.addEventListener('click', function() {
-            playbackSpeedIndex = (playbackSpeedIndex + 1) % playbackSpeeds.length;
-            audio.playbackRate = playbackSpeeds[playbackSpeedIndex];
-            speedButton.textContent = playbackSpeeds[playbackSpeedIndex] + 'x';
-        });
-
-        downloadButton.addEventListener('click', function() {
-            // Obtenir le lien de téléchargement depuis la source audio
-            const audioSource = audio.querySelector('source');
-            const audioSrc = audioSource.getAttribute('src');
-            const downloadLink = document.createElement('a');
-            downloadLink.href = audioSrc;
-            downloadLink.download = audioSrc.split('/').pop();
-            downloadLink.click();
         });
     });
 
