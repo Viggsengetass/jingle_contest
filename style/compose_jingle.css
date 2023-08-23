@@ -1,14 +1,49 @@
-/* Styles CSS pour la mise en forme de la page */
-
-#startButton {
-    background-color: #1DB954;
+/* Composition de Jingle Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
 }
 
-#stopButton {
-    background-color: #FF0000;
+h1 {
+    color: #333;
 }
 
-#downloadButton {
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 15px;
     background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+a {
+    display: none;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+a:hover {
+    opacity: 0.8;
+}

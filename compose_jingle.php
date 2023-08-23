@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Composition de Jingle</title>
+    <?php include 'common.php'; ?>
+    <link rel="stylesheet" href="/style/compose_jingle.css">
 </head>
 <body>
 <h1>Composition de Jingle</h1>
