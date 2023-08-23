@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/style/compose_jingle.css">
 </head>
 <body>
+<?php include 'header.php'; ?>
 <h1>Composition de Jingle</h1>
 <button id="startButton">Démarrer la Composition</button>
 <button id="stopButton" disabled>Arrêter la Composition</button>
