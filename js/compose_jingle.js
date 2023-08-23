@@ -29,8 +29,7 @@ startButton.addEventListener('click', async () => {
                 const mp3Url = URL.createObjectURL(mp3Blob);
                 downloadLink.href = mp3Url;
                 downloadLink.download = 'jingle.mp3';
-                downloadLink.style.display = 'block';
-                downloadLink.click(); // Cliquez automatiquement sur le lien pour le téléchargement
+                downloadLink.style.display = 'block'; // Affichez le lien de téléchargement
             });
         };
 
