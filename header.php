@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Se déconnecter</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="compose_jingle.php">Composez votre jingle</a>
+                </li>
             </ul>
         </div>
     </div>
