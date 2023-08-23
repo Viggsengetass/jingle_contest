@@ -44,6 +44,7 @@ startButton.addEventListener('click', async () => {
                 const mp3Url = URL.createObjectURL(mp3Blob);
                 downloadLink.href = mp3Url;
                 downloadLink.download = 'jingle.mp3';
+                downloadLink.style.display = 'block';
             });
         };
         reader.readAsArrayBuffer(audioBlob);
