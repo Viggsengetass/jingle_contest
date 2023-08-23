@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "lamejs": "^1.2.1",
+    "tone": "^14.7.77"
+  }
+}

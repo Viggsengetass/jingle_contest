@@ -1,75 +1,79 @@
-// Importez la bibliothèque Tone.js en tant que module ES6
-import * as Tone from 'tone';
+let isRecording = false;
+let recorder, audioContext;
+let audioChunks = [];
 
-// Définissez les paramètres de la synthétiseur et des effets
-const synth = new Tone.Synth({
-    oscillator: {
-        type: 'sine', // Type d'onde (vous pouvez le changer)
-    },
-    envelope: {
-        attack: 0.1,
-        decay: 0.2,
-        sustain: 0.3,
-        release: 0.5,
-    },
-}).toDestination();
-
-// Créez un objet Pattern pour stocker les notes
-const melodyPattern = new Tone.Pattern(
-    (time, note) => {
-        synth.triggerAttackRelease(note, '4n', time);
-    },
-    ['C4', 'D4', 'E4', 'F4'], // Vous pouvez changer ces notes
-    'up'
-);
-
-// Bouton de démarrage
 const startButton = document.getElementById('startButton');
-startButton.addEventListener('click', () => {
-    // Démarrer la synthétisation de la mélodie
-    Tone.Transport.start();
-    melodyPattern.start();
-});
-
-// Bouton d'arrêt
 const stopButton = document.getElementById('stopButton');
-stopButton.addEventListener('click', () => {
-    // Arrêter la synthétisation de la mélodie
-    Tone.Transport.stop();
-    melodyPattern.stop();
-});
-
-// Bouton de réinitialisation
-const resetButton = document.getElementById('resetButton');
-resetButton.addEventListener('click', () => {
-    // Réinitialiser la synthétisation de la mélodie
-    melodyPattern.stop();
-    melodyPattern.start();
-});
-
-// Bouton de téléchargement
 const downloadButton = document.getElementById('downloadButton');
-downloadButton.addEventListener('click', async () => {
-    // Obtenir la séquence audio générée
-    const audioBuffer = await Tone.Offline(() => {
-        melodyPattern.start(0);
-        Tone.Transport.start(0);
-    }, melodyPattern.length);
 
-    // Créer un fichier WAV à partir de la séquence audio
-    const audioBlob = new Blob([audioBuffer], { type: 'audio/wav' });
-    const audioUrl = URL.createObjectURL(audioBlob);
+startButton.addEventListener('click', async () => {
+    audioChunks = [];
+    isRecording = true;
+    startButton.disabled = true;
+    stopButton.disabled = false;
 
-    // Créer un lien de téléchargement
-    const downloadLink = document.createElement('a');
-    downloadLink.href = audioUrl;
-    downloadLink.download = 'jingle.wav';
-    downloadLink.click();
+    audioContext = new AudioContext();
+    recorder = new MediaRecorder(audioContext.createMediaStreamDestination());
+
+    recorder.ondataavailable = event => audioChunks.push(event.data);
+    recorder.onstop = () => {
+        isRecording = false;
+        startButton.disabled = false;
+        stopButton.disabled = true;
+        downloadButton.disabled = false;
+    };
+
+    recorder.start();
 });
 
-// Bouton de réinitialisation de la mélodie
-const resetButton = document.getElementById('resetButton');
-resetButton.addEventListener('click', () => {
-    melodyPattern.stop();
-    melodyPattern.start();
+stopButton.addEventListener('click', () => {
+    if (isRecording) {
+        recorder.stop();
+    }
 });
+
+downloadButton.addEventListener('click', () => {
+    if (audioChunks.length > 0) {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        const reader = new FileReader();
+
+        reader.onload = async () => {
+            const wavData = new Uint8Array(reader.result);
+            const mp3Data = convertWavToMp3(wavData);
+
+            const mp3Blob = new Blob([mp3Data.buffer], { type: 'audio/mp3' });
+            const mp3Url = URL.createObjectURL(mp3Blob);
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = mp3Url;
+            downloadLink.download = 'jingle.mp3';
+            downloadLink.click();
+        };
+
+        reader.readAsArrayBuffer(audioBlob);
+    }
+});
+
+function convertWavToMp3(wavData) {
+    const encoder = new lamejs.Mp3Encoder(1, 44100, 128);
+    const mp3Data = [];
+
+    const samples = new Int16Array(wavData.buffer);
+    const sampleBlockSize = 1152;
+
+    for (let i = 0; i < samples.length; i += sampleBlockSize) {
+        const leftChunk = samples.subarray(i, i + sampleBlockSize);
+        const mp3Buffer = encoder.encodeBuffer(leftChunk);
+        if (mp3Buffer.length > 0) {
+            mp3Data.push(new Int8Array(mp3Buffer));
+        }
+    }
+
+    const mp3Buffer = encoder.flush();
+    if (mp3Buffer.length > 0) {
+        mp3Data.push(new Int8Array(mp3Buffer));
+    }
+
+    const result = new Uint8Array(mp3Data.reduce((acc, chunk) => acc.concat(Array.from(chunk)), []));
+    return result;
+}
