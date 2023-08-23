@@ -30,9 +30,19 @@ startButton.addEventListener('click', () => {
                 downloadLink.style.display = 'block';
 
                 const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                const audioUrl = URL.createObjectURL(audioBlob);
-                downloadLink.href = audioUrl;
-                downloadLink.download = 'jingle.wav';
+
+                // Conversion du fichier audio WAV en MP3
+                const audioFileReader = new FileReader();
+                audioFileReader.onload = () => {
+                    const wavData = new Uint8Array(audioFileReader.result);
+                    convertWavToMp3(wavData, (mp3Array) => {
+                        const mp3Blob = new Blob([mp3Array], { type: 'audio/mp3' });
+                        const mp3Url = URL.createObjectURL(mp3Blob);
+                        downloadLink.href = mp3Url;
+                        downloadLink.download = 'jingle.mp3';
+                    });
+                };
+                audioFileReader.readAsArrayBuffer(audioBlob);
             };
 
             mediaRecorder.start();
@@ -47,3 +57,26 @@ stopButton.addEventListener('click', () => {
         mediaRecorder.stop();
     }
 });
+
+function convertWavToMp3(wavData, callback) {
+    const encoder = new lamejs.Mp3Encoder(1, 44100, 128);
+    const samples = new Int16Array(wavData.buffer);
+
+    const mp3Data = [];
+
+    for (let i = 0; i < samples.length; i += 1152) {
+        const leftChunk = samples.subarray(i, i + 1152);
+        const mp3buf = encoder.encodeBuffer(leftChunk);
+        if (mp3buf.length > 0) {
+            mp3Data.push(new Int8Array(mp3buf));
+        }
+    }
+
+    const mp3buf = encoder.flush();
+    if (mp3buf.length > 0) {
+        mp3Data.push(new Int8Array(mp3buf));
+    }
+
+    const result = new Uint8Array(mp3Data.reduce((acc, chunk) => acc.concat(Array.from(chunk)), []));
+    callback(result);
+}
